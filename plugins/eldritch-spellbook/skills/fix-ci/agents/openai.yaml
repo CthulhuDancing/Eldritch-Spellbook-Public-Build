@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fix CI"
+  short_description: "Diagnose and resolve failing automated checks."
+  default_prompt: "Use $fix-ci to diagnose these failing checks and make the smallest safe correction."

@@ -1,0 +1,20 @@
+{
+  "name": "eldritch-spellbook",
+  "interface": {
+    "displayName": "Eldritch Spellbook"
+  },
+  "plugins": [
+    {
+      "name": "eldritch-spellbook",
+      "source": {
+        "source": "local",
+        "path": "./plugins/eldritch-spellbook"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

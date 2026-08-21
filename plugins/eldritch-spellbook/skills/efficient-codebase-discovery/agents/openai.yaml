@@ -1,0 +1,7 @@
+interface:
+  display_name: "Efficient Codebase Discovery"
+  short_description: "Find unfamiliar code with minimal search overhead."
+  default_prompt: "Use $efficient-codebase-discovery to locate and verify this unfamiliar behavior efficiently."
+
+policy:
+  allow_implicit_invocation: true

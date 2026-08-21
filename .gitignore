@@ -1,0 +1,86 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+credentials.*
+secrets.*
+
+# Dependencies and package managers
+node_modules/
+.pnpm-store/
+.yarn/
+vendor/
+
+# Build, coverage, and generated output
+dist/
+build/
+out/
+coverage/
+.cache/
+.tmp/
+tmp/
+temp/
+*.zip
+skill.zip
+
+# Logs and runtime files
+logs/
+log/
+*.log
+*.pid
+*.pid.lock
+
+# Local archives and backups
+.archive/
+archive/
+*.bak
+*.backup
+*.old
+
+# Local databases and runtime data
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Python tooling
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# JavaScript and framework tooling
+.next/
+.nuxt/
+.svelte-kit/
+.vite/
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.code-workspace
+
+# Assistant and agent working directories
+.codex/
+.claude/
+.gemini/
+.agent/
+.agents/*
+!.agents/plugins/
+.agents/plugins/*
+!.agents/plugins/marketplace.json
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+desktop.ini

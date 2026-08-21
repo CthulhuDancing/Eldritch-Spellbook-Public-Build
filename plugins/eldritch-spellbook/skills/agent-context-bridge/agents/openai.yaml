@@ -1,0 +1,7 @@
+interface:
+  display_name: "Agent Context Bridge"
+  short_description: "Pass project or targeted task context to coding agents."
+  default_prompt: "Use $agent-context-bridge to prepare the smallest useful handoff for this coding work."
+
+policy:
+  allow_implicit_invocation: true
