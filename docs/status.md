@@ -6,7 +6,7 @@
 
 ## Current phase
 
-Prepare the portable five-skill plugin for a clean public repository.
+Validate the five-skill plugin from its public repository.
 
 ## Completed
 
@@ -18,11 +18,11 @@ Prepare the portable five-skill plugin for a clean public repository.
 - Added provider-neutral `fix-ci` guidance that implicitly diagnoses failing automated checks and separates code defects from environment or external failures.
 - Removed machine-specific paths, fixed worktree locations, and shared-tooling assumptions.
 - Preserved user-controlled boundaries for consequential GitHub and agent actions.
-- Merged the portability and workflow cleanup into `main`.
+- Initialized the clean public repository with fresh Git history.
 
 ## Next
 
-Copy the clean current tree into a new public repository with fresh Git history, then validate a fresh marketplace installation without Morph credentials, private workspace tooling, or provider-specific CI dependencies.
+Validate a fresh marketplace installation from the public repository without Morph credentials, private workspace tooling, or provider-specific CI dependencies.
 
 ## Blockers
 
