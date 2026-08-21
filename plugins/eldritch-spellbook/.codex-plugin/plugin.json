@@ -1,0 +1,32 @@
+{
+  "name": "eldritch-spellbook",
+  "version": "0.10.0",
+  "description": "Lean co-development guidance for codebase discovery, safe GitHub actions, routine worktree tasks, agent handoffs, and CI failure recovery.",
+  "author": {
+    "name": "CthulhuDancing",
+    "url": "https://github.com/CthulhuDancing"
+  },
+  "repository": "https://github.com/CthulhuDancing/Eldritch-Spellbook",
+  "keywords": [
+    "development-workflow",
+    "github",
+    "agent-handoff",
+    "codebase-discovery",
+    "semantic-search",
+    "context-bridge",
+    "worktree",
+    "routine-task",
+    "ci",
+    "build-failure"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Eldritch Spellbook",
+    "shortDescription": "Focused guidance for efficient co-development workflows.",
+    "longDescription": "Five concise workflows for low-overhead codebase discovery, safe GitHub repository actions, routine isolated-worktree tasks, lightweight agent handoffs, and provider-neutral CI failure recovery.",
+    "developerName": "CthulhuDancing",
+    "category": "Developer Tools",
+    "capabilities": [],
+    "defaultPrompt": "Help me move this development task forward with the smallest relevant Eldritch Spellbook workflow."
+  }
+}
