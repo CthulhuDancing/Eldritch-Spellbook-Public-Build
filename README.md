@@ -10,7 +10,7 @@ should begin with [`AGENTS.md`](AGENTS.md).
 
 Add this repository in the marketplace UI with:
 
-- **Source:** `https://github.com/CthulhuDancing/Eldritch-Spellbook.git`
+- **Source:** `https://github.com/CthulhuDancing/Eldritch-Spellbook-Public-Build.git`
 - **Git ref:** `main`
 - **Sparse paths:** `.agents/plugins/marketplace.json` and `plugins/eldritch-spellbook`
 
