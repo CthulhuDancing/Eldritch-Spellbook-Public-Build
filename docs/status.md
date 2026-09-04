@@ -2,11 +2,11 @@
 
 ## Version
 
-`0.11.0` - Local workspace bootstrap and routine-worktree fast path
+`0.12.0` - External code research
 
 ## Current phase
 
-Validate the six-skill plugin from its public repository.
+Validate the seven-skill plugin from its public repository.
 
 ## Completed
 
@@ -24,6 +24,8 @@ Validate the six-skill plugin from its public repository.
   attempting replacement.
 - Added a routine-worktree policy fast path so clear local guidance is reused
   without repeated instruction audits.
+- Added a dedicated read-only workflow for external public source and
+  dependency-internals research, separate from local codebase discovery.
 
 ## Next
 
