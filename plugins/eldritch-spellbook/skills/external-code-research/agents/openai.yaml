@@ -1,0 +1,4 @@
+interface:
+  display_name: "External Code Research"
+  short_description: "Investigate public upstream code and dependency internals."
+  default_prompt: "Use $external-code-research to understand this upstream implementation."

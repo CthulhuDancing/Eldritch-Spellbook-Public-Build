@@ -70,3 +70,12 @@ machine or workspace conventions only in a confirmed shared workspace and
 only with current-request authorization; it never records machine topology in
 a project repository. Project dependencies remain project-local, while shared
 download caches or documented runtimes may be reused when compatible.
+
+## D014 - External code research boundary
+
+`external-code-research` covers public upstream repositories and dependency
+internals, not the current repository. It uses the smallest available
+authoritative source, treats external search tools as optional, and verifies
+relevant source before drawing conclusions. It remains read-only and reports
+the source revision, relevant files, and any inference separately from verified
+facts.

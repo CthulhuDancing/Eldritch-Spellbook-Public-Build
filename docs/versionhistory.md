@@ -1,5 +1,13 @@
 # Version History
 
+## 0.12.0 - External code research
+
+Added `external-code-research`, a read-only workflow for investigating public
+upstream repositories and dependency internals. It uses the smallest available
+authoritative source, treats external search as optional, verifies relevant
+source before conclusions, and keeps external findings separate from local
+repository discovery.
+
 ## 0.11.0 - Local workspace bootstrap
 
 Added `local-workspace-bootstrap`, a narrowly triggered workflow for reusing
