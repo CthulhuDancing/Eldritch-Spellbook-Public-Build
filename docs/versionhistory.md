@@ -1,5 +1,18 @@
 # Version History
 
+## 0.11.0 - Local workspace bootstrap
+
+Added `local-workspace-bootstrap`, a narrowly triggered workflow for reusing
+documented local tools, runtimes, caches, and worktree conventions before
+creating replacements. It classifies environment failures, limits recovery to
+targeted checks, records safe workspace-local guidance only with authorization,
+and preserves project-local dependency ownership.
+
+Routine worktree tasks now take a policy fast path when clear repository or
+workspace guidance already exists. They avoid repeated instruction audits while
+retaining concrete Git and target-path safety checks, and report whether local
+conventions were reused, recorded, or not recorded.
+
 ## 0.10.0 - Portable CI failure recovery
 
 Added `fix-ci`, an implicitly discoverable provider-neutral workflow for diagnosing failing builds, tests, linting, type checks, deployment checks, pull-request checks, and other automated validation. It identifies the earliest actionable root cause, distinguishes code defects from flaky or external failures before editing, applies the smallest safe correction when appropriate, and avoids weakening checks merely to obtain a green result.

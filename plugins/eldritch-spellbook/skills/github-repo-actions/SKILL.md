@@ -25,6 +25,11 @@ Before writing:
 4. Create one focused branch and commit for one coherent review unit.
 5. Run repository-relevant validation, push, and open or update the requested pull request.
 
+When a requested GitHub write requires repository edits, follow the
+repository's established branch and worktree workflow. Apply the Routine
+Worktree Task flow when its suitability gate fits; do not recreate
+local-convention discovery in this skill.
+
 Do not merge, enable auto-merge, request reviewers, assign users, add labels, close work, or create releases unless explicitly asked. For multi-repository work, keep branches, validation, and pull requests repository-local and state dependencies clearly.
 
 Return a concise operational summary: GitHub state or action completed, branch/PR/release references when applicable, validation, unresolved risk, and next user decision.

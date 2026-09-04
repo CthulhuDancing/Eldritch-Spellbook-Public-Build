@@ -2,11 +2,11 @@
 
 ## Version
 
-`0.10.0` - Portable CI failure recovery
+`0.11.0` - Local workspace bootstrap and routine-worktree fast path
 
 ## Current phase
 
-Validate the five-skill plugin from its public repository.
+Validate the six-skill plugin from its public repository.
 
 ## Completed
 
@@ -19,10 +19,16 @@ Validate the five-skill plugin from its public repository.
 - Removed machine-specific paths, fixed worktree locations, and shared-tooling assumptions.
 - Preserved user-controlled boundaries for consequential GitHub and agent actions.
 - Initialized the clean public repository with fresh Git history.
+- Added a narrowly gated local-workspace bootstrap workflow that reuses
+  documented runtimes, tools, caches, and worktree conventions before
+  attempting replacement.
+- Added a routine-worktree policy fast path so clear local guidance is reused
+  without repeated instruction audits.
 
 ## Next
 
-Validate a fresh marketplace installation from the public repository without Morph credentials, private workspace tooling, or provider-specific CI dependencies.
+Validate a fresh marketplace installation from the public repository without
+pre-existing local workspace conventions or provider-specific CI dependencies.
 
 ## Blockers
 
