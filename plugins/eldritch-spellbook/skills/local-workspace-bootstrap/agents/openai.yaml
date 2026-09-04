@@ -1,0 +1,4 @@
+interface:
+  display_name: "Local Workspace Bootstrap"
+  short_description: "Reuse or safely establish shared local development conventions."
+  default_prompt: "Use $local-workspace-bootstrap to establish or repair reusable local workspace conventions."

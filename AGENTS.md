@@ -14,6 +14,7 @@ For explicit GitHub operations, use
 `plugins/eldritch-spellbook/skills/github-repo-actions/SKILL.md`.
 Use `plugins/eldritch-spellbook/skills/agent-context-bridge/SKILL.md` when project context or a bounded task should be handed between normal chat and a coding agent.
 Use `plugins/eldritch-spellbook/skills/routine-worktree-task/SKILL.md` when a bounded, low-risk repository revision fits its suitability gate.
+Use `plugins/eldritch-spellbook/skills/local-workspace-bootstrap/SKILL.md` only when the user asks to establish or repair reusable local workspace conventions, or repeated equivalent environment failures show that documented local policy is missing.
 Use `plugins/eldritch-spellbook/skills/fix-ci/SKILL.md` when automated checks are failing or reported as red/broken, including when the user does not know the CI provider or terminology.
 Use `efficient-codebase-discovery` for unfamiliar or scattered code discovery; use exact search and targeted reads for known paths, symbols, strings, errors, or patterns.
 

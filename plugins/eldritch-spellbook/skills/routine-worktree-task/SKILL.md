@@ -10,6 +10,24 @@ delivery flow; it does not select or downgrade models, alter task-creation
 defaults, or change Codex runtime configuration. Repository instructions
 remain authoritative.
 
+## Policy Fast Path
+
+Start from applicable instructions already available in the current task. Do
+not rediscover, reread, or audit every `AGENTS.md` merely to prove that local
+conventions exist.
+
+When known repository, workspace, or machine guidance clearly provides the
+worktree location, branch and review rules, and relevant validation source,
+reuse it. Perform only task-specific checks: current working-tree and remote
+state, existing worktree registrations, and the exact target path. Do not
+search for alternate workspace roots, repeat equivalent instruction reads, or
+record local guidance.
+
+Use local-workspace bootstrap only when a required local convention is
+missing, ambiguous, contradictory, unusable for the task, or blocked by a
+concrete filesystem or Git-state failure. A known convention never replaces
+task-specific safety checks.
+
 ## Suitability Gate
 
 Use this workflow only when every condition is true:
@@ -42,7 +60,7 @@ Before editing, state or confirm:
 1. Confirm scope, branch/base, worktree location, and preserved local changes.
 2. Read applicable repository instructions, roadmap or status documents, and component documentation before editing.
 3. Identify the project-owned install, test, build, and/or validation commands.
-4. Fetch the current default branch; create an isolated task branch and worktree from it, following repository and environment guidance when available.
+4. Fetch the current default branch; create an isolated assistant-owned task branch and worktree from it, following repository and environment guidance when available. Do not alter the normal checkout or write to the default branch without explicit authorization.
 5. Make only the requested changes. Keep shared tooling generic; leave project
    runtime policy, dependencies, tests, CI, release boundaries, and business
    behavior to the project.
@@ -50,7 +68,12 @@ Before editing, state or confirm:
 7. Commit, push, and open a draft pull request. Do not merge, add reviewers or
    labels, or enable auto-merge unless the user explicitly asks.
 8. Hand off the branch, worktree, changed files, validation, pull-request URL,
-   and any specific review risk.
+   review risk, and `Local conventions: reused <source>`, `recorded <path>`,
+   or `not recorded <reason>`.
+
+Do not manually delete a registered worktree. Remove one only through the
+repository's Git worktree workflow when the user explicitly asks or cleanup is
+part of the requested task.
 
 ## Escalate Out of Routine Flow
 

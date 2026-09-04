@@ -59,3 +59,14 @@ Agent handoff preparation uses two forward lanes. Project handoffs carry durable
 ## D012 - CI recovery boundary
 
 `fix-ci` is provider-neutral and may be discovered implicitly from failing builds, tests, linting, type checks, deployment checks, pull-request checks, or other automated validation. It must distinguish code defects from flaky, infrastructure, permission, credential, and external-service failures before editing. A green result does not justify weakening tests, suppressing errors, broadening ignores, or changing CI policy without explicit user direction.
+
+## D013 - Local workspace bootstrap boundary
+
+`local-workspace-bootstrap` reuses documented local runtimes, tools, caches,
+and worktree conventions before attempting any replacement. It is reserved for
+an explicit local-environment setup or repair request, or repeated equivalent
+environment failures that established guidance cannot resolve. It may record
+machine or workspace conventions only in a confirmed shared workspace and
+only with current-request authorization; it never records machine topology in
+a project repository. Project dependencies remain project-local, while shared
+download caches or documented runtimes may be reused when compatible.
