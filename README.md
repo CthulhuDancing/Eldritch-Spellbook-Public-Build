@@ -22,7 +22,7 @@ Install the **Eldritch Spellbook** listing after the marketplace syncs.
 - [`external-code-research`](plugins/eldritch-spellbook/skills/external-code-research/) investigates public upstream repositories or dependency internals when an external implementation detail matters, while keeping that work separate from local codebase discovery.
 - [`local-workspace-bootstrap`](plugins/eldritch-spellbook/skills/local-workspace-bootstrap/) reuses documented local runtimes, tools, caches, and worktree conventions; it safely establishes those conventions only when its narrow bootstrap conditions apply.
 - [`github-repo-actions`](plugins/eldritch-spellbook/skills/github-repo-actions/) handles explicitly requested GitHub inspection and branch, commit, pull request, review, issue, or release actions.
-- [`agent-context-bridge`](plugins/eldritch-spellbook/skills/agent-context-bridge/) recognizes when work should move between conversational and coding-agent workflows, using broader handoffs for continuation context and targeted task handoffs for bounded implementation work.
+- [`agent-context-bridge`](plugins/eldritch-spellbook/skills/agent-context-bridge/) carries context when work actually transfers between conversations, tasks, or agents; it does not wrap ordinary implementation requests in handoff templates.
 - [`routine-worktree-task`](plugins/eldritch-spellbook/skills/routine-worktree-task/) helps recognize and safely execute low-risk repository revisions through an isolated worktree and draft pull request.
 - [`fix-ci`](plugins/eldritch-spellbook/skills/fix-ci/) implicitly diagnoses failing automated checks, separates code defects from CI/environment failures, and applies the smallest safe correction when appropriate.
 
@@ -30,6 +30,11 @@ The skills provide workflow guidance only. They do not install or authenticate
 external services, invoke other agents, or silently change repository state.
 Persistent local-workspace guidance is recorded only when the current request
 authorizes bootstrap and a safe workspace scope is established.
+
+Plain-language requests can select the relevant skill without naming it.
+Selection is separate from permission to act: reviews stay read-only, and local
+edits do not imply publishing. Known local conventions take the fast path;
+bootstrap fills only needed gaps and records how future tasks will find them.
 
 ## Maintenance
 

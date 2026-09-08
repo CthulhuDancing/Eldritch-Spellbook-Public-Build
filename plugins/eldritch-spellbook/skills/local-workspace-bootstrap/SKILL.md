@@ -1,6 +1,6 @@
 ---
 name: local-workspace-bootstrap
-description: Reuse or safely establish documented local workspace conventions for runtimes, tools, caches, and assistant worktrees. Use when the user explicitly asks to set up or repair reusable local workspace conventions, or when repeated equivalent sandbox, runtime-discovery, or dependency-bootstrap failures show that existing guidance cannot resolve them. Do not use for ordinary project dependency installation or one failed command.
+description: Reuse or safely establish local conventions for shared runtimes, tools, caches, and assistant worktrees. Use for explicit reusable-environment setup or repair, or before creating or replacing a shared resource when a required convention is missing, conflicting, or unusable. Do not use for ordinary project dependency installation, application data storage, or a single command failure that existing guidance already resolves.
 ---
 
 # Local Workspace Bootstrap
@@ -35,39 +35,49 @@ Classify the earliest concrete failure before changing local state:
 - **Application or configuration defect:** return to the owning repository's
   normal diagnosis and validation workflow.
 
-Use one targeted verification and one appropriate recovery path. If the same
-failure remains, stop repeating equivalent setup attempts and report the
-evidence and needed user decision.
+Do not repeat equivalent setup attempts without new evidence. Continue when
+a targeted check reveals a different actionable cause; otherwise report the
+boundary and the smallest needed decision. One failed command does not prove
+that an installed resource is missing.
 
 ## Local Convention Resolution
 
-Use this order for local conventions:
+Resolve ownership, not a new instruction hierarchy:
 
-1. Repository instructions for project-owned behavior.
-2. Existing workspace or machine-level `AGENTS.md` for local topology.
-3. Current user instruction.
-4. A confirmed shared workspace bootstrap, only when the current request
-   authorizes persistent local setup.
+- Repository guidance owns project commands, dependencies, tests, and CI.
+- Applicable workspace or machine `AGENTS.md` owns reusable local topology.
+- Follow the host's instruction precedence; an explicit user change to a
+  stored preference is not subordinate to that preference.
+- Reading or diagnosing does not authorize persistent setup. An already
+  authorized bootstrap needs no second confirmation for its safe, scoped steps.
 
 Never put machine-specific paths, caches, ports, credentials, or local preview
 steps into a project repository solely to solve a workstation concern.
 
-When bootstrap is authorized, identify an existing multi-repository workspace
-outside the current repository. If no safe shared workspace is evident, do not
-invent a broad directory or create a worktree; ask the user to choose the
-location.
+When bootstrap is authorized, prefer an existing safe shared workspace outside
+the repository. If none exists, resolve a dedicated user-owned location outside
+source and release trees using the host's actual filesystem conventions.
+Check the exact target, ownership, access, and existing contents before creating
+only what is needed. Ask only if scope or ownership remains consequentially
+unclear. Do not move existing installations, delete contents, widen permissions,
+or alter sandbox trust as an implied part of bootstrap.
 
-In a confirmed workspace-level `AGENTS.md`, record only the missing local
-conventions: shared tooling or runtime locations, cache policy, project-local
-dependency ownership, assistant worktree location, escalation rule, and a
-small verification command set. Preserve existing guidance and do not overwrite
-user-authored content.
+Record only missing durable conventions in an applicable local `AGENTS.md`:
+the selected locations, compatibility and dependency-ownership rules, and any
+needed verification or escalation command. Preserve user-authored guidance;
+do not copy this skill or store credentials there.
+
+Make the policy discoverable through the host's supported instruction entry
+point, or a scoped pointer from already applicable local guidance. An
+`AGENTS.md` in a sibling tooling folder is not automatically loaded by every
+agent or workspace. Record the intended scope and pointer when authorized;
+otherwise report the discovery gap instead of claiming future reuse is assured.
 
 ## Return
 
 Report:
 
 - `Environment conventions: reused <source>`, `recorded <path>`, or `not recorded <reason>`.
-- the failure classification and exact evidence.
+- the failure classification and sanitized evidence, when there was a failure.
 - the runtime, tool, cache, or project setup path selected.
-- the next user decision when a safe local convention could not be established.
+- any recorded policy/pointer, its scope, and the next decision if unresolved.

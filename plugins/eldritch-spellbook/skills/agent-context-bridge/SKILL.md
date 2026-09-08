@@ -1,17 +1,17 @@
 ---
 name: agent-context-bridge
-description: Prepare compact handoffs between normal chat and Codex or another coding agent. Use implicitly when a conversation has enough project or task context that moving implementation to a coding agent would be useful, when the user asks Codex to take over or implement something, or when completed agent work needs to be translated back into normal chat. Choose a project handoff for broad continuation context and a targeted task handoff for one bounded implementation request. Do not invoke another agent or start implementation unless the current environment and user request explicitly support that action.
+description: Prepare compact context handoffs when work moves between chats, tasks, agents, or execution environments, or when completed agent work must be translated back to the originating conversation. Use a project handoff for broad continuation and a targeted handoff for one bounded task. Do not use merely because the user asks the current agent to implement something in its existing context. Preparing a handoff does not authorize invoking an agent or starting implementation.
 ---
 
 # Agent Context Bridge
 
-Move only the context that improves the next agent's work. Prefer confirmed conversation state and named artifacts; inspect repository state only when needed to make the handoff accurate.
+Move only the context that improves the receiving agent's work. Prefer confirmed conversation state and named artifacts; inspect repository state only when needed to make the handoff accurate. Use the fields below only when relevant; omit empty sections and do not turn ordinary implementation or completion replies into handoff templates.
 
 ## Choose a Forward Lane
 
 ### Project Handoff
 
-Use when Codex needs enough durable context to continue a project or substantial workstream across multiple tasks.
+Use when the receiving agent needs durable context to continue a project or substantial workstream across multiple tasks.
 
 Produce compact Markdown with:
 
@@ -22,13 +22,13 @@ Produce compact Markdown with:
 - **Repository orientation:** only the important files, components, branches, or documentation already known to matter.
 - **Open work:** prioritized remaining work or the immediate next objective.
 - **Validation:** project-owned checks that matter when changes are made.
-- **Completion report:** what Codex should return to normal chat.
+- **Completion report:** what the receiving agent should return to the originating conversation.
 
-Keep historical narrative out unless it explains a current constraint or decision. Do not make Codex rediscover information already established in chat.
+Keep historical narrative out unless it explains a current constraint or decision. Do not make the receiving agent rediscover information already established in chat.
 
 ### Targeted Task Handoff
 
-Use for one specific implementation, fix, investigation, refactor, or review task that Codex can execute without carrying the whole project conversation.
+Use for one specific implementation, fix, investigation, refactor, or review task that another agent or task can execute without carrying the whole project conversation.
 
 Produce a focused prompt with:
 
@@ -42,7 +42,7 @@ Produce a focused prompt with:
 
 Do not include broad project history, speculative file lists, or decisions unrelated to the task. Prefer a short executable brief over a comprehensive summary.
 
-## Codex or Task Agent to Chat
+## Task Agent to Originating Conversation
 
 When completed agent work is being returned to normal chat, produce compact Markdown with:
 

@@ -1,5 +1,15 @@
 # Version History
 
+## 0.12.1 - Routing and bootstrap refinements
+
+Separated automatic skill selection from action authorization, enabled
+natural-language GitHub requests, and limited handoffs to real context
+transfers. Aligned bootstrap triggers with reuse before replacement, clarified
+instruction ownership, replaced fixed retry counts with evidence-based
+recovery, and added safe fresh-user setup and discoverable local-policy
+recording. Routine reviews remain read-only and retain checkout protections
+when the suitability gate does not fit.
+
 ## 0.12.0 - External code research
 
 Added `external-code-research`, a read-only workflow for investigating public

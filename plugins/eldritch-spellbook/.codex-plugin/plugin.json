@@ -1,6 +1,6 @@
 {
   "name": "eldritch-spellbook",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "description": "Lean co-development guidance for codebase discovery, external code research, local workspace bootstrap, safe GitHub actions, routine worktree tasks, agent handoffs, and CI failure recovery.",
   "author": {
     "name": "CthulhuDancing",

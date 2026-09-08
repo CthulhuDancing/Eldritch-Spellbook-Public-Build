@@ -1,6 +1,6 @@
 ---
 name: routine-worktree-task
-description: Recognize, prepare, and execute low-risk repository work through an isolated worktree and draft pull request. Use when one bounded roadmap revision or similarly narrow request has clear ownership, deterministic validation, and no unresolved architectural, production-sensitive, cross-repository, or secret-handling concerns. Decline the routine flow when those conditions are not met.
+description: Recognize, prepare, and execute low-risk repository work through an isolated worktree and draft pull request. Use when a bounded change has clear ownership, deterministic validation, and no unresolved architectural, production-sensitive, cross-repository, or secret-handling concerns. For a trivial local edit, use only when isolated delivery is requested or required by applicable guidance. Decline the routine flow when its suitability conditions are not met.
 ---
 
 # Routine Worktree Task
@@ -11,6 +11,9 @@ defaults, or change Codex runtime configuration. Repository instructions
 remain authoritative.
 
 ## Policy Fast Path
+
+For a trivial local edit with no requested or required isolated-delivery flow,
+follow normal local editing rules without a full worktree brief or PR workflow.
 
 Start from applicable instructions already available in the current task. Do
 not rediscover, reread, or audit every `AGENTS.md` merely to prove that local
@@ -23,10 +26,11 @@ state, existing worktree registrations, and the exact target path. Do not
 search for alternate workspace roots, repeat equivalent instruction reads, or
 record local guidance.
 
-Use local-workspace bootstrap only when a required local convention is
-missing, ambiguous, contradictory, unusable for the task, or blocked by a
-concrete filesystem or Git-state failure. A known convention never replaces
-task-specific safety checks.
+Use local-workspace bootstrap when a required shared-resource convention must
+be established or repaired before creating or replacing that resource. Resolve
+a single permission failure through known guidance first; ordinary Git-state
+problems do not call for environment bootstrap. A known convention never
+replaces task-specific safety checks.
 
 ## Suitability Gate
 
@@ -40,7 +44,13 @@ Use this workflow only when every condition is true:
 - One isolated branch/worktree and focused pull request can contain the work.
 - Deterministic checks and a concise review focus can express success.
 
-If any condition is false, do not use the routine flow. Handle the request with the level of attention and user involvement appropriate to the unresolved risk.
+If any condition is false, do not use the routine flow. Handle the request with
+attention appropriate to the unresolved risk; preserve default-branch,
+normal-checkout, and unrelated-change protections outside this flow too.
+
+For review or planning, assess suitability without creating a worktree, editing,
+committing, or publishing. Skill activation does not authorize delivery steps;
+perform them only within the current request's scope.
 
 ## Task Brief
 
@@ -49,7 +59,7 @@ Before editing, state or confirm:
 - **Scope:** named revision, acceptance condition, and excluded adjacent work.
 - **Repository and ownership:** project-owned files and any shared boundary.
 - **Base and branch:** current default branch and a focused task branch name.
-- **Worktree:** an isolated location that follows repository or environment guidance when available; otherwise choose a safe local location without assuming a fixed directory layout.
+- **Worktree:** reuse the documented location; if a shared convention is needed, resolve it through local-workspace bootstrap without assuming a fixed layout.
 - **Local state:** normal checkout and existing worktrees inspected; unrelated
   local changes preserved.
 - **Proof:** project-owned commands that demonstrate success.
@@ -58,14 +68,19 @@ Before editing, state or confirm:
 ## Deterministic Workflow
 
 1. Confirm scope, branch/base, worktree location, and preserved local changes.
-2. Read applicable repository instructions, roadmap or status documents, and component documentation before editing.
+2. Use applicable instructions and relevant project documentation; read only missing or changed context before editing.
 3. Identify the project-owned install, test, build, and/or validation commands.
-4. Fetch the current default branch; create an isolated assistant-owned task branch and worktree from it, following repository and environment guidance when available. Do not alter the normal checkout or write to the default branch without explicit authorization.
+4. Reuse an existing assistant-owned branch/worktree when it belongs to this
+   task and meets the requested base and isolation requirements; preserve its
+   approved work. For a new task, fetch the requested or default base and create
+   the isolated task branch/worktree from it. Do not reuse unrelated work,
+   rebase an existing task silently, alter the normal checkout, or write to the
+   default branch without authorization for that action.
 5. Make only the requested changes. Keep shared tooling generic; leave project
    runtime policy, dependencies, tests, CI, release boundaries, and business
    behavior to the project.
 6. Run the complete required validation and record exact commands and results.
-7. Commit, push, and open a draft pull request. Do not merge, add reviewers or
+7. When delivery is authorized, commit, push, and open a draft pull request. Do not merge, add reviewers or
    labels, or enable auto-merge unless the user explicitly asks.
 8. Hand off the branch, worktree, changed files, validation, pull-request URL,
    review risk, and `Local conventions: reused <source>`, `recorded <path>`,

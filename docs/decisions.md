@@ -20,7 +20,10 @@ trigger and instructions save more effort than they consume.
 
 ## D004 - Activation boundaries
 
-Efficient codebase discovery, agent handoff preparation, routine-work suitability, and CI failure recovery may trigger implicitly when their conditions fit. GitHub repository actions remain explicit-only because they can cross consequential write and coordination boundaries.
+Skills may be selected automatically when their narrow descriptions fit.
+GitHub actions require an explicit user request for the action, not an explicit
+skill-name invocation. Skill selection never supplies permission for writes,
+publishing, or coordination; read-only requests remain read-only.
 
 ## D005 - Proportional discovery
 
@@ -54,7 +57,7 @@ No installable workflow may require Morph or another external semantic-search se
 
 ## D011 - Handoff lanes
 
-Agent handoff preparation uses two forward lanes. Project handoffs carry durable project state, decisions, constraints, and open work when a coding agent needs broad continuation context. Targeted task handoffs carry only the minimum context needed for one bounded implementation, fix, investigation, refactor, or review. Both may be discovered implicitly; preparing a handoff does not itself authorize agent invocation or repository writes.
+Agent handoff preparation uses two forward lanes. Project handoffs carry durable project state, decisions, constraints, and open work when a coding agent needs broad continuation context. Targeted task handoffs carry only the minimum context needed for one bounded implementation, fix, investigation, refactor, or review. Both may be discovered implicitly for an actual transfer between tasks, agents, or environments, not ordinary implementation in the current context. Preparing a handoff does not itself authorize agent invocation or repository writes.
 
 ## D012 - CI recovery boundary
 
@@ -63,13 +66,19 @@ Agent handoff preparation uses two forward lanes. Project handoffs carry durable
 ## D013 - Local workspace bootstrap boundary
 
 `local-workspace-bootstrap` reuses documented local runtimes, tools, caches,
-and worktree conventions before attempting any replacement. It is reserved for
-an explicit local-environment setup or repair request, or repeated equivalent
-environment failures that established guidance cannot resolve. It may record
-machine or workspace conventions only in a confirmed shared workspace and
-only with current-request authorization; it never records machine topology in
-a project repository. Project dependencies remain project-local, while shared
-download caches or documented runtimes may be reused when compatible.
+and worktree conventions before attempting any replacement. It applies to
+explicit reusable-environment setup or repair, or an unresolved required
+convention before shared-resource creation or replacement. Known recovery
+guidance and ordinary project installs do not need a full bootstrap.
+
+Persistent setup requires current-request authorization. A safe, dedicated
+user-owned location may be established when no shared workspace exists. Record
+only missing conventions in applicable local guidance and make discovery
+explicit through a supported entry point or scoped pointer; a sibling
+`AGENTS.md` alone is insufficient. Machine topology stays out of tracked project
+guidance. Ownership rules do not override the host's instruction hierarchy.
+Project dependencies remain project-local; compatible caches and runtimes may
+be reused. Retry only when new evidence makes the next step useful.
 
 ## D014 - External code research boundary
 

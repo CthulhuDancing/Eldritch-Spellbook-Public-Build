@@ -2,7 +2,7 @@
 
 ## Version
 
-`0.12.0` - External code research
+`0.12.1` - Routing and bootstrap refinements
 
 ## Current phase
 
@@ -14,7 +14,8 @@ Validate the seven-skill plugin from its public repository.
 - Kept codebase discovery implicit for unfamiliar or scattered behavior while preferring exact native search for known targets.
 - Kept routine-worktree suitability discoverable for users who may not know which workflow to request.
 - Made agent handoff preparation discoverable and split it into project and targeted-task lanes.
-- Kept GitHub repository actions explicit-only.
+- Enabled natural-language selection for explicitly requested GitHub actions,
+  without inferring permission to write from skill selection.
 - Added provider-neutral `fix-ci` guidance that implicitly diagnoses failing automated checks and separates code defects from environment or external failures.
 - Removed machine-specific paths, fixed worktree locations, and shared-tooling assumptions.
 - Preserved user-controlled boundaries for consequential GitHub and agent actions.
@@ -26,6 +27,10 @@ Validate the seven-skill plugin from its public repository.
   without repeated instruction audits.
 - Added a dedicated read-only workflow for external public source and
   dependency-internals research, separate from local codebase discovery.
+- Narrowed handoffs to actual context transfers, aligned bootstrap entry points,
+  and separated instruction ownership from precedence.
+- Added a safe fresh-user bootstrap fallback and discoverable local-policy
+  recording, while retaining fast-path reuse and scoped authorization.
 
 ## Next
 

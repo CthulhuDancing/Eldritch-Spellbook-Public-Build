@@ -7,6 +7,11 @@ description: Perform explicit GitHub repository actions while preserving review 
 
 Use GitHub state only to the depth required by the request. Keep verified facts separate from assumptions and report access gaps that affect confidence.
 
+An ordinary-language request such as "open a PR" or "review this issue" is
+enough to select this skill; the user need not name it. Selection does not
+authorize unrequested writes. A read-only review remains read-only, and local
+editing alone is not a request to publish.
+
 ## Read actions
 
 1. Resolve the repository and default branch.
@@ -22,7 +27,7 @@ Before writing:
 1. Confirm repository, remote, base branch, current branch, and working-tree state.
 2. Preserve unrelated and user-owned changes.
 3. Use an isolated assistant worktree when repository or workspace guidance requires it.
-4. Create one focused branch and commit for one coherent review unit.
+4. Use a focused branch with commits grouped into coherent review units.
 5. Run repository-relevant validation, push, and open or update the requested pull request.
 
 When a requested GitHub write requires repository edits, follow the
