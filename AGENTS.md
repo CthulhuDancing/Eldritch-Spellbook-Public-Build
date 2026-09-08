@@ -17,6 +17,7 @@ Use `plugins/eldritch-spellbook/skills/routine-worktree-task/SKILL.md` when a bo
 Use `plugins/eldritch-spellbook/skills/external-code-research/SKILL.md` when an external public repository or dependency implementation must be understood; do not use it for local repository discovery.
 Use `plugins/eldritch-spellbook/skills/local-workspace-bootstrap/SKILL.md` for explicit reusable-environment setup or repair, or before creating or replacing a shared resource whose required convention is unresolved. Do not bootstrap for a single failure that known guidance resolves.
 Use `plugins/eldritch-spellbook/skills/fix-ci/SKILL.md` when automated checks are failing or reported as red/broken, including when the user does not know the CI provider or terminology.
+Use `plugins/eldritch-spellbook/skills/application-data-and-secrets/SKILL.md` for application credential sources, deployment configuration storage, persistent/private data paths, or their explicit review. Do not infer a general security audit from unrelated edits.
 Use `efficient-codebase-discovery` for unfamiliar or scattered code discovery; use exact search and targeted reads for known paths, symbols, strings, errors, or patterns.
 
 ## Repository layout

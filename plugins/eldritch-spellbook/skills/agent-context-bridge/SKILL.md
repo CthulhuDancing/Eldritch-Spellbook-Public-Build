@@ -59,3 +59,6 @@ Do not manufacture decisions or hide material uncertainty in assumptions. State 
 Preparing a handoff does not itself authorize repository writes, agent invocation, merges, releases, or other consequential actions. If the environment can directly hand work to an agent, follow the user's request and the applicable tool or product boundary; otherwise return the handoff in the current response.
 
 Summarize evidence rather than replaying logs or exhaustive file inventories. Create a saved handoff file only when the user requests one or an established workflow requires one.
+
+Carry credential source names and access requirements, never secret values or
+unnecessary private data. Sanitize excerpts before including them.

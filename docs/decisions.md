@@ -88,3 +88,20 @@ authoritative source, treats external search tools as optional, and verifies
 relevant source before drawing conclusions. It remains read-only and reports
 the source revision, relevant files, and any inference separately from verified
 facts.
+
+## D015 - Application data and secrets boundary
+
+`application-data-and-secrets` owns application credential sources,
+deployment-configuration storage, and persistent/private data locations.
+It is not an always-on security audit or shared-tooling bootstrap. Existing
+safe policy takes a task-specific fast path; platform and credential details
+load only for their relevant decisions.
+
+Track portable contracts and safe examples. Record actual machine choices in
+discoverable, applicable local guidance only within authorized setup; never
+record secret values. Prefer existing supported identity/secret facilities
+without adding a provider dependency. Directory names and Git ignores do not
+prove access control or remediate leaks. Validate the runtime identity and
+preserve controlled rollback for authorized migrations. Production cutover,
+credential revocation, destructive cleanup, and history changes retain their
+own authorization boundaries.

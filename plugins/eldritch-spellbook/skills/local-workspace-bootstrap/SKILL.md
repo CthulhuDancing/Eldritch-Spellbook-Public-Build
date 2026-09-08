@@ -9,6 +9,9 @@ Use existing local policy before creating a replacement runtime, tool, cache,
 environment, or worktree convention. This workflow is for reusable local
 environment setup and recovery, not ordinary project setup.
 
+For application credentials or persistent data locations, use
+application-data-and-secrets when available; do not treat them as shared tooling.
+
 ## Fast Path
 
 Start from applicable instructions already available in the task. If they name

@@ -47,6 +47,9 @@ Use this workflow only when every condition is true:
 If any condition is false, do not use the routine flow. Handle the request with
 attention appropriate to the unresolved risk; preserve default-branch,
 normal-checkout, and unrelated-change protections outside this flow too.
+When application storage or credentials are the unresolved concern, use
+application-data-and-secrets when available; do not force a migration through
+the routine gate.
 
 For review or planning, assess suitability without creating a worktree, editing,
 committing, or publishing. Skill activation does not authorize delivery steps;

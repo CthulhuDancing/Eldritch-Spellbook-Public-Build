@@ -9,7 +9,7 @@ Treat failing automation as evidence to diagnose, not as a command to change cod
 
 1. Start from the current branch, change, task, or pull request and the available failed checks. Do not rediscover unrelated repository structure.
 2. Use the CI or repository integration already available in the environment. Do not require a particular provider, CLI, API, or hosted service.
-3. Read the failing job, step, test, or log closely enough to identify the earliest actionable root cause. Prefer the first meaningful failure over downstream noise.
+3. Read the failing job, step, test, or log closely enough to identify the earliest actionable root cause. Prefer the first meaningful failure over downstream noise. Minimize captured output and redact secret values before sharing diagnostics.
 4. Classify the failure before editing:
    - **Code/configuration defect:** fix the smallest relevant cause.
    - **Flaky or nondeterministic failure:** reproduce when practical; do not mask it with unrelated code changes.
@@ -23,3 +23,8 @@ Treat failing automation as evidence to diagnose, not as a command to change cod
 Do not weaken tests, delete checks, suppress errors, broaden ignores, or alter CI policy merely to obtain a green result unless the user explicitly requests that policy change and the repository permits it.
 
 Do not create commits, push branches, rerun remote jobs, or mutate repository state unless the current request and applicable repository workflow authorize those actions. Diagnosis and a proposed fix can still proceed when write access or CI-control actions are unavailable.
+
+Use application-data-and-secrets when available only if the correction changes
+application credential sources or storage, or a concrete exposure needs
+handling. A missing CI credential alone needs a scoped access diagnosis, not
+an application-storage redesign.

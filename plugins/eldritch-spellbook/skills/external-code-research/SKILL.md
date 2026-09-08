@@ -7,6 +7,8 @@ description: Research public upstream repositories or dependency internals when 
 
 Investigate only the external implementation detail needed for the current
 question. Keep this work read-only and separate from local codebase discovery.
+Keep external queries limited to public identifiers and sanitized behavior;
+do not send local credentials, private configuration, or raw internal logs.
 
 1. Identify the upstream project, package version or revision when known, and
    the concrete behavior to understand.

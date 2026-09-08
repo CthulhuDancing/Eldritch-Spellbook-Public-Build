@@ -1,7 +1,7 @@
 {
   "name": "eldritch-spellbook",
-  "version": "0.12.1",
-  "description": "Lean co-development guidance for codebase discovery, external code research, local workspace bootstrap, safe GitHub actions, routine worktree tasks, agent handoffs, and CI failure recovery.",
+  "version": "0.13.0",
+  "description": "Lean co-development guidance for discovery, upstream research, reusable workspaces, application data and secrets, safe GitHub actions, worktrees, handoffs, and CI recovery.",
   "author": {
     "name": "CthulhuDancing",
     "url": "https://github.com/CthulhuDancing"
@@ -22,13 +22,15 @@
     "local-runtime",
     "dependency-cache",
     "upstream-research",
-    "dependency-internals"
+    "dependency-internals",
+    "application-data",
+    "secrets-handling"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Eldritch Spellbook",
     "shortDescription": "Focused guidance for efficient co-development workflows.",
-    "longDescription": "Seven concise workflows for low-overhead codebase discovery, external source research, reusable local-workspace bootstrap, safe GitHub repository actions, routine isolated-worktree tasks, lightweight agent handoffs, and provider-neutral CI failure recovery.",
+    "longDescription": "Eight focused workflows for codebase discovery, upstream research, reusable local workspaces, application data and secrets, safe GitHub actions, isolated-worktree tasks, context handoffs, and provider-neutral CI recovery. Reuse established local policy and load detailed guidance only when relevant.",
     "developerName": "CthulhuDancing",
     "category": "Developer Tools",
     "capabilities": [],

@@ -2,11 +2,11 @@
 
 ## Version
 
-`0.12.1` - Routing and bootstrap refinements
+`0.13.0` - Application data and secrets
 
 ## Current phase
 
-Validate the seven-skill plugin from its public repository.
+Validate the eight-skill plugin from its public repository.
 
 ## Completed
 
@@ -31,11 +31,20 @@ Validate the seven-skill plugin from its public repository.
   and separated instruction ownership from precedence.
 - Added a safe fresh-user bootstrap fallback and discoverable local-policy
   recording, while retaining fast-path reuse and scoped authorization.
+- Allowed suitable existing task worktrees to be reused and kept trivial local
+  edits outside the full delivery workflow unless that workflow is required.
+- Added application data and secrets guidance with conditional platform and
+  credential references, runtime-identity checks, and bounded migrations.
+- Kept application storage separate from reusable development tooling, with
+  small conditional routes and sanitized research, CI, and handoff evidence.
 
 ## Next
 
 Validate a fresh marketplace installation from the public repository without
 pre-existing local workspace conventions or provider-specific CI dependencies.
+Use `docs/validation.md` for positive and negative activation scenarios; source
+validation or an instruction walkthrough does not prove fresh-chat activation
+or live platform permissions.
 
 ## Blockers
 

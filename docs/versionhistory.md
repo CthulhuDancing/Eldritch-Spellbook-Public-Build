@@ -1,5 +1,15 @@
 # Version History
 
+## 0.13.0 - Application data and secrets
+
+Added the eighth skill, `application-data-and-secrets`, for scoped application
+credential/configuration and persistent-data decisions. It reuses established
+policy, supplies platform-aware fallbacks through two conditional references,
+checks actual runtime access, and separates local choices from portable
+contracts. Added narrow integration points, sanitized evidence guidance, and
+maintainer behavioral scenarios without adding a global audit or changing
+local installations.
+
 ## 0.12.1 - Routing and bootstrap refinements
 
 Separated automatic skill selection from action authorization, enabled
@@ -9,6 +19,9 @@ instruction ownership, replaced fixed retry counts with evidence-based
 recovery, and added safe fresh-user setup and discoverable local-policy
 recording. Routine reviews remain read-only and retain checkout protections
 when the suitability gate does not fit.
+Suitable existing task worktrees may be reused; trivial local edits do not
+require the full delivery flow unless user or applicable local guidance calls
+for it.
 
 ## 0.12.0 - External code research
 
