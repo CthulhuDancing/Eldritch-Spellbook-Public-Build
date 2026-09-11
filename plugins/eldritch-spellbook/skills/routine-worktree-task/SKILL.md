@@ -1,85 +1,61 @@
 ---
 name: routine-worktree-task
-description: Recognize, prepare, and execute low-risk repository work through an isolated worktree and draft pull request. Use when one bounded roadmap revision or similarly narrow request has clear ownership, deterministic validation, and no unresolved architectural, production-sensitive, cross-repository, or secret-handling concerns. Decline the routine flow when those conditions are not met.
+description: Prepare and deliver a bounded, low-risk repository change through an isolated worktree and draft PR when ownership and validation are clear. For trivial local edits, use only when isolated delivery is requested or required. Exclude unresolved architectural, production-sensitive, cross-repository, or secret-handling work.
 ---
 
 # Routine Worktree Task
 
-Keep this workflow advisory. It prepares a strong task brief and deterministic
-delivery flow; it does not select or downgrade models, alter task-creation
-defaults, or change Codex runtime configuration. Repository instructions
-remain authoritative.
+This is a repository delivery workflow, not authority to change models, task
+creation, or agent runtime settings. Review and planning requests remain
+read-only; perform delivery steps only within the user's authorized scope.
 
 ## Policy Fast Path
 
-Start from applicable instructions already available in the current task. Do
-not rediscover, reread, or audit every `AGENTS.md` merely to prove that local
-conventions exist.
+Reuse applicable instructions already in context. When worktree, branch,
+review, and validation conventions are known, check only current Git state,
+registered worktrees, and the exact target. Do not repeat instruction audits,
+search alternate roots, or record unchanged policy.
 
-When known repository, workspace, or machine guidance clearly provides the
-worktree location, branch and review rules, and relevant validation source,
-reuse it. Perform only task-specific checks: current working-tree and remote
-state, existing worktree registrations, and the exact target path. Do not
-search for alternate workspace roots, repeat equivalent instruction reads, or
-record local guidance.
+If a required shared-resource convention needs setup or repair, use
+local-workspace-bootstrap when available. Resolve single permission failures
+through known guidance first; ordinary Git-state problems are not bootstrap
+requests. Trivial local edits need no full delivery flow unless requested or
+required by applicable guidance.
 
-Use local-workspace bootstrap only when a required local convention is
-missing, ambiguous, contradictory, unusable for the task, or blocked by a
-concrete filesystem or Git-state failure. A known convention never replaces
-task-specific safety checks.
+## Suitability
 
-## Suitability Gate
+Proceed when one bounded change has clear ownership, maintained deterministic
+validation, and fits one isolated branch/worktree and focused PR. No unresolved
+architecture, product, or cross-repository decision, secret handling, or
+material production change may remain.
 
-Use this workflow only when every condition is true:
+If those conditions cease to hold, network/security behavior changes, or
+validation fails unexpectedly, reassess outside the routine flow. Preserve
+checkout and unrelated-change protections. For application storage or
+credential concerns, use application-data-and-secrets when available.
 
-- The request is one bounded roadmap revision or similarly narrow change.
-- Ownership and file boundaries are clear.
-- No architecture or external product decision remains unresolved.
-- No secret handling or material production behavior is involved.
-- Maintained install, test, build, and/or validation commands exist.
-- One isolated branch/worktree and focused pull request can contain the work.
-- Deterministic checks and a concise review focus can express success.
+## Delivery
 
-If any condition is false, do not use the routine flow. Handle the request with the level of attention and user involvement appropriate to the unresolved risk.
+1. Before editing, state or reuse the agreed scope, acceptance checks, ownership,
+   base/branch, worktree, validation commands, and review focus. Inspect local and
+   remote state and preserve unrelated work.
+2. Reuse a suitable assistant-owned branch/worktree belonging to this task and
+   meeting its requested base/isolation requirements. For a new task, fetch the
+   requested or default base and create an isolated branch/worktree from it.
+   Do not reuse another task's workspace, silently rebase approved work, alter
+   the normal checkout, or write to the default branch without authorization
+   for that action.
+3. Read only missing or changed project context and make the scoped edits.
+   Repository guidance owns runtime policy, dependencies, tests, CI, releases,
+   and business behavior; keep shared tooling generic.
+4. Run the complete required validation and record commands and results.
+5. Commit and publish within the requested scope. A push request includes
+   creating or updating a draft PR unless the user or applicable `AGENTS.md`
+   explicitly excludes it.
+   Do not merge, deploy, enable auto-merge, add reviewers, or add labels unless asked.
+6. Report the branch/worktree, changed files, validation, PR reference, review
+   risk, and `Local conventions: reused <source>`, `recorded <path>`, or
+   `not recorded <reason>`.
 
-## Task Brief
-
-Before editing, state or confirm:
-
-- **Scope:** named revision, acceptance condition, and excluded adjacent work.
-- **Repository and ownership:** project-owned files and any shared boundary.
-- **Base and branch:** current default branch and a focused task branch name.
-- **Worktree:** an isolated location that follows repository or environment guidance when available; otherwise choose a safe local location without assuming a fixed directory layout.
-- **Local state:** normal checkout and existing worktrees inspected; unrelated
-  local changes preserved.
-- **Proof:** project-owned commands that demonstrate success.
-- **Review focus:** the one or two risks a reviewer should inspect.
-
-## Deterministic Workflow
-
-1. Confirm scope, branch/base, worktree location, and preserved local changes.
-2. Read applicable repository instructions, roadmap or status documents, and component documentation before editing.
-3. Identify the project-owned install, test, build, and/or validation commands.
-4. Fetch the current default branch; create an isolated assistant-owned task branch and worktree from it, following repository and environment guidance when available. Do not alter the normal checkout or write to the default branch without explicit authorization.
-5. Make only the requested changes. Keep shared tooling generic; leave project
-   runtime policy, dependencies, tests, CI, release boundaries, and business
-   behavior to the project.
-6. Run the complete required validation and record exact commands and results.
-7. Commit, push, and open a draft pull request. Do not merge, add reviewers or
-   labels, or enable auto-merge unless the user explicitly asks.
-8. Hand off the branch, worktree, changed files, validation, pull-request URL,
-   review risk, and `Local conventions: reused <source>`, `recorded <path>`,
-   or `not recorded <reason>`.
-
-Do not manually delete a registered worktree. Remove one only through the
-repository's Git worktree workflow when the user explicitly asks or cleanup is
-part of the requested task.
-
-## Escalate Out of Routine Flow
-
-- Requirements conflict or lack a clear acceptance condition.
-- An architectural boundary changes.
-- Production, security, credential, or network behavior changes.
-- Validation is missing, flaky, or fails unexpectedly.
-- Scope expands beyond the named revision.
-- Cross-repository ownership is uncertain.
+Remove registered worktrees only through Git's worktree workflow when cleanup
+is requested or included in the task; never manually delete their directories.

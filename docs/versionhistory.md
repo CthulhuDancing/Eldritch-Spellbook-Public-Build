@@ -1,5 +1,18 @@
 # Version History
 
+## 0.13.0 - Application data and workflow refinements
+
+Added `application-data-and-secrets`, two conditional references, and behavioral
+scenarios. Separated skill selection from action authorization, narrowed
+handoffs to actual transfers, and refined workspace reuse, safe bootstrap,
+and discoverable local-policy recording. Suitable task worktrees can be reused;
+trivial edits need no full delivery flow unless required.
+
+Consolidated repeated instructions and documentation, including the intermediate
+0.12.1 routing work in this release. Preserved the eight skills, activation
+settings, and security boundaries. Push requests include draft PR delivery
+unless explicitly excluded by the user or applicable local guidance.
+
 ## 0.12.0 - External code research
 
 Added `external-code-research`, a read-only workflow for investigating public

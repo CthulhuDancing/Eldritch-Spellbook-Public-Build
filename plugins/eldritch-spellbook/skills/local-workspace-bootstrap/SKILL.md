@@ -1,73 +1,65 @@
 ---
 name: local-workspace-bootstrap
-description: Reuse or safely establish documented local workspace conventions for runtimes, tools, caches, and assistant worktrees. Use when the user explicitly asks to set up or repair reusable local workspace conventions, or when repeated equivalent sandbox, runtime-discovery, or dependency-bootstrap failures show that existing guidance cannot resolve them. Do not use for ordinary project dependency installation or one failed command.
+description: Set up or repair reusable local runtimes, tools, caches, and worktree conventions, or resolve a required convention before creating or replacing a shared resource. Exclude application storage, ordinary project installs, and single failures that existing guidance resolves.
 ---
 
 # Local Workspace Bootstrap
 
-Use existing local policy before creating a replacement runtime, tool, cache,
-environment, or worktree convention. This workflow is for reusable local
-environment setup and recovery, not ordinary project setup.
-
 ## Fast Path
 
-Start from applicable instructions already available in the task. If they name
-a usable shared runtime, tool directory, cache, worktree root, or escalation
-path, reuse it. Verify only the specific path or command needed by the current
-task; do not audit the machine, recreate an equivalent resource, or reread
-guidance merely to confirm it exists.
+Reuse applicable local policy already in context. Verify only the runtime,
+tool, cache, worktree path, or escalation command needed now; do not audit the
+machine, reread unchanged guidance, or recreate an equivalent resource.
 
-## Failure Classification
+This skill owns reusable development resources. For application credentials
+or persistent data, use application-data-and-secrets when available.
 
-Classify the earliest concrete failure before changing local state:
+## Diagnose Before Replacing
 
-- **Sandbox or permission:** use the environment's authorized escalation path;
-  do not create a replacement runtime or alter project configuration merely to
-  bypass the boundary.
-- **Missing executable or runtime:** check documented local locations and the
-  active environment before proposing installation.
-- **Missing project dependency:** follow the project's lockfile and setup
-  process. Keep installed dependencies project-local; reuse a documented
-  compatible download cache when available.
-- **Cache, credential, network, or external-service failure:** report the
-  boundary and use the documented recovery path. Do not substitute a new
-  local service, credential, or package source.
-- **Application or configuration defect:** return to the owning repository's
-  normal diagnosis and validation workflow.
+Classify the earliest concrete failure:
 
-Use one targeted verification and one appropriate recovery path. If the same
-failure remains, stop repeating equivalent setup attempts and report the
-evidence and needed user decision.
+- **Sandbox/permission:** use the authorized escalation path, not a replacement
+  runtime or project-configuration change that bypasses the boundary.
+- **Missing executable/runtime:** check documented locations and the active
+  environment before proposing installation.
+- **Project dependency:** follow project setup and lockfiles. Keep installed
+  dependencies project-local; reuse compatible documented download caches.
+- **Cache, credential, network, or external service:** follow documented recovery
+  or report the boundary; do not substitute services, credentials, or package sources.
+- **Application/configuration defect:** return to repository diagnosis and validation.
 
-## Local Convention Resolution
+One failed command does not prove a resource is missing. Retry only when new
+evidence makes another check or recovery useful; otherwise report the cause
+and smallest needed decision.
 
-Use this order for local conventions:
+## Establish Only Missing Conventions
 
-1. Repository instructions for project-owned behavior.
-2. Existing workspace or machine-level `AGENTS.md` for local topology.
-3. Current user instruction.
-4. A confirmed shared workspace bootstrap, only when the current request
-   authorizes persistent local setup.
+Repository guidance owns project commands, dependencies, tests, and CI;
+applicable workspace or machine `AGENTS.md` owns reusable topology. Follow the
+host's instruction hierarchy, not a new precedence order. A current explicit
+user request may update a stored preference while the host instruction
+hierarchy still applies.
 
-Never put machine-specific paths, caches, ports, credentials, or local preview
-steps into a project repository solely to solve a workstation concern.
+Reading or diagnosing does not authorize persistent setup. For authorized
+bootstrap, proceed without reconfirming safe steps within scope:
 
-When bootstrap is authorized, identify an existing multi-repository workspace
-outside the current repository. If no safe shared workspace is evident, do not
-invent a broad directory or create a worktree; ask the user to choose the
-location.
-
-In a confirmed workspace-level `AGENTS.md`, record only the missing local
-conventions: shared tooling or runtime locations, cache policy, project-local
-dependency ownership, assistant worktree location, escalation rule, and a
-small verification command set. Preserve existing guidance and do not overwrite
-user-authored content.
+1. Prefer an existing safe shared workspace outside the repository. Otherwise,
+   resolve a dedicated user-owned location outside source/release trees using
+   the host filesystem. Check exact target, ownership, access, and contents;
+   ask only if a material scope or ownership choice remains unresolved.
+2. Create only needed resources. Do not imply authority to move installations,
+   delete contents, widen permissions, or alter sandbox trust.
+3. Record missing locations, compatibility/dependency-ownership rules, and
+   needed verification or escalation commands in applicable local `AGENTS.md`.
+   Preserve existing guidance; keep machine-specific topology out of tracked
+   project files. Do not copy this skill or record credential values.
+4. Make policy discoverable through the host's supported instruction entry
+   point or a scoped pointer from applicable local guidance. A sibling
+   `AGENTS.md` is not automatically loaded everywhere. Report any unrecorded
+   pointer or discovery gap instead of promising future reuse.
 
 ## Return
 
-Report:
-
-- `Environment conventions: reused <source>`, `recorded <path>`, or `not recorded <reason>`.
-- the failure classification and exact evidence.
-- the runtime, tool, cache, or project setup path selected.
-- the next user decision when a safe local convention could not be established.
+Report `Environment conventions: reused <source>`, `recorded <path>`, or
+`not recorded <reason>`; the selected resources; any failure and sanitized
+evidence; and recorded policy/pointer scope or remaining decision.

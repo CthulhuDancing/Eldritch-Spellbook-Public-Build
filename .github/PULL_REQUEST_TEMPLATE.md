@@ -2,6 +2,8 @@
 
 What changed and why?
 
+For skill changes, give before/after word counts and explain any net growth.
+
 ## Validation
 
 What checks were run?
