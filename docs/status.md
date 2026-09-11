@@ -2,9 +2,9 @@
 
 ## Current
 
-`0.13.0` contains eight skills, including application data/secrets guidance and
-refined routing/bootstrap behavior. The wording-reduction pass consolidates
-repeated instructions without adding skills or changing activation settings.
+`0.13.0` adds the `application-data-and-secrets` skill, enables implicit
+invocation for `github-repo-actions`, and refines routing/bootstrap behavior.
+The wording-reduction pass consolidates repeated instructions.
 
 ## Next
 
