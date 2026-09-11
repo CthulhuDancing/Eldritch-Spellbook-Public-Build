@@ -1,6 +1,6 @@
 ---
 name: efficient-codebase-discovery
-description: Guide low-overhead codebase discovery before implementation, debugging, review, or planning. Use implicitly only when behavior is unfamiliar, scattered across files, or repeated exact searches would be inefficient. Prefer exact native search for known paths, symbols, strings, errors, or patterns. Use semantic or codebase-search tools only when they are already available, and verify discovered source before relying on it or editing.
+description: Locate unfamiliar or scattered repository behavior before implementation, debugging, review, or planning. Prefer exact search for known targets; use already-available semantic tools only when they reduce exploration.
 ---
 
 # Efficient Codebase Discovery

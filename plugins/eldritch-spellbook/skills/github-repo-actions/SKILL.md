@@ -1,40 +1,36 @@
 ---
 name: github-repo-actions
-description: Perform explicit GitHub repository actions while preserving review boundaries. Use only when the user explicitly asks to inspect GitHub state or handle a branch, commit, push, issue, pull request, GitHub review, release, or cross-repository GitHub coordination. Do not use for ordinary local edits or inferred GitHub work.
+description: Handle explicitly requested GitHub inspection, branches, commits, pushes, issues, PRs, reviews, releases, or cross-repository coordination. Ordinary local edits do not imply GitHub work; the user need not name this skill.
 ---
 
 # GitHub Repository Actions
 
-Use GitHub state only to the depth required by the request. Keep verified facts separate from assumptions and report access gaps that affect confidence.
+Natural-language requests such as "open a PR" or "review this issue" select
+this workflow, not permission for additional actions. Reviews remain read-only.
+Local editing alone does not authorize publication.
 
-An ordinary-language request such as "open a PR" or "review this issue" is
-enough to select this skill; the user need not name it. Selection does not
-authorize unrequested writes. A read-only review remains read-only, and local
-editing alone is not a request to publish.
+## Read Actions
 
-## Read actions
+Resolve the repository and default branch, then inspect only the requested
+state and relevant overlapping work. Separate verified facts from assumptions
+and report access gaps that affect the answer.
 
-1. Resolve the repository and default branch.
-2. Inspect only the requested issues, pull requests, reviews, releases, files, or overlapping work.
-3. Summarize the requested state, material risks, and the smallest useful next action.
+## Write Actions
 
-## Write actions
+Treat the default branch as user-controlled: an authorized push or PR uses a
+focused task branch unless the user explicitly requests a default-branch write.
 
-Treat the default branch as user-controlled. A general request to make or push a change authorizes a focused branch and pull request, not a direct default-branch write. Write directly to the default branch only when the user explicitly requests that exact path.
+1. Confirm repository, remote, base/current branch, and working-tree state.
+   Preserve unrelated changes.
+2. For repository edits, follow established branch/worktree conventions;
+   use routine-worktree-task when available and suitable. Do not duplicate
+   local-policy discovery here.
+3. Group commits into coherent review units and run relevant validation.
+   Commit, push, and open or update a PR only as authorized by the request.
 
-Before writing:
+Do not merge, enable auto-merge, request reviewers, assign users, add labels,
+close work, or create releases unless explicitly asked. Keep multi-repository
+branches, validation, and PRs repository-local and state their dependencies.
 
-1. Confirm repository, remote, base branch, current branch, and working-tree state.
-2. Preserve unrelated and user-owned changes.
-3. Use an isolated assistant worktree when repository or workspace guidance requires it.
-4. Use a focused branch with commits grouped into coherent review units.
-5. Run repository-relevant validation, push, and open or update the requested pull request.
-
-When a requested GitHub write requires repository edits, follow the
-repository's established branch and worktree workflow. Apply the Routine
-Worktree Task flow when its suitability gate fits; do not recreate
-local-convention discovery in this skill.
-
-Do not merge, enable auto-merge, request reviewers, assign users, add labels, close work, or create releases unless explicitly asked. For multi-repository work, keep branches, validation, and pull requests repository-local and state dependencies clearly.
-
-Return a concise operational summary: GitHub state or action completed, branch/PR/release references when applicable, validation, unresolved risk, and next user decision.
+Return the inspected state or completed action, relevant references,
+validation, unresolved risks, and any needed user decision.

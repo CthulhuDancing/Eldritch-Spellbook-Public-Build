@@ -1,51 +1,43 @@
 # Repository Agent Guide
 
-These instructions apply to the entire repository. Also follow any applicable repository- or workspace-level guidance that is available in the current environment.
+Follow applicable host, workspace, and repository guidance. Keep work bounded
+to the requested change, preserve unrelated edits, and do not modify other
+repositories or local installations unless asked.
 
-## Working approach
+## Sources and Routing
 
-- Make bounded edits directly from the current request, named files, and current diff.
-- Do not rediscover the whole repository for ordinary maintenance. Expand discovery only when the change is unfamiliar, cross-cutting, or blocked by missing evidence.
-- Preserve unrelated and user-owned changes.
-- Keep edits inside this repository unless the user explicitly requests changes elsewhere.
-- Use a skill only when its trigger applies. Automatic selection never authorizes unrequested actions.
+- Canonical skills: `plugins/eldritch-spellbook/skills/<skill-name>/`.
+  Installed/cache copies are outputs, not editing targets.
+- Plugin metadata: `plugins/eldritch-spellbook/.codex-plugin/plugin.json`.
+- Marketplace: `.agents/plugins/marketplace.json`.
+- [README](README.md): installation and skill index.
+- [Status](docs/status.md): current state and next verification.
+- [Decisions](docs/decisions.md): durable choices and rationale.
+- [Version history](docs/versionhistory.md): completed revisions.
+- [Validation](docs/validation.md): behavioral scenarios.
 
-For explicit GitHub operations, use
-`plugins/eldritch-spellbook/skills/github-repo-actions/SKILL.md`.
-Use `plugins/eldritch-spellbook/skills/agent-context-bridge/SKILL.md` when project context or a bounded task should be handed between normal chat and a coding agent.
-Use `plugins/eldritch-spellbook/skills/routine-worktree-task/SKILL.md` when a bounded, low-risk repository revision fits its suitability gate.
-Use `plugins/eldritch-spellbook/skills/external-code-research/SKILL.md` when an external public repository or dependency implementation must be understood; do not use it for local repository discovery.
-Use `plugins/eldritch-spellbook/skills/local-workspace-bootstrap/SKILL.md` for explicit reusable-environment setup or repair, or before creating or replacing a shared resource whose required convention is unresolved. Do not bootstrap for a single failure that known guidance resolves.
-Use `plugins/eldritch-spellbook/skills/fix-ci/SKILL.md` when automated checks are failing or reported as red/broken, including when the user does not know the CI provider or terminology.
-Use `plugins/eldritch-spellbook/skills/application-data-and-secrets/SKILL.md` for application credential sources, deployment configuration storage, persistent/private data paths, or their explicit review. Do not infer a general security audit from unrelated edits.
-Use `efficient-codebase-discovery` for unfamiliar or scattered code discovery; use exact search and targeted reads for known paths, symbols, strings, errors, or patterns.
+Select relevant skills from their source descriptions; do not infer permission
+from activation. For GitHub operations, read
+`plugins/eldritch-spellbook/skills/github-repo-actions/SKILL.md`; apply
+`routine-worktree-task` only when its suitability gate fits.
 
-## Repository layout
+## Maintenance
 
-- `.agents/plugins/marketplace.json` exposes the local marketplace entry.
-- `plugins/eldritch-spellbook/.codex-plugin/plugin.json` owns plugin metadata.
-- `plugins/eldritch-spellbook/skills/<skill-name>/` contains canonical skill sources.
-- `README.md` is human-facing navigation.
-- `docs/status.md` is the current resume point.
-- `docs/decisions.md` records durable constraints.
-- `docs/versionhistory.md` records completed revisions.
+Start from named files and the current diff. Expand discovery only for
+unfamiliar, cross-cutting, or unresolved behavior.
 
-Add directories and support files only when the plugin actively uses them. Do
-not commit placeholders, generated archives, temporary output, or speculative
-scaffolding.
+Keep triggers narrow, bodies self-contained, and UI metadata aligned. Replace
+overlapping instructions instead of appending caveats; explain net skill-word
+growth in PRs. Update each document only for information it owns, without
+copying workflow text into status or decisions.
 
-## Skill and plugin changes
-
-- Keep trigger descriptions narrow and bodies concise; every installed skill consumes discoverability and context budget.
-- Keep `agents/openai.yaml` aligned with its `SKILL.md`; distinguish automatic skill selection from authorization for consequential actions.
-- Use available skill or plugin validators when the environment provides them; do not assume a particular shared tool or local installation exists.
-- Update status, decisions, or version history only when their owned information changes.
+Add support files only when actively used. Exclude placeholders, archives,
+temporary output, and speculative scaffolding. Preserve existing activation,
+dependency, and UI settings unless the task calls for changing them.
 
 ## Validation
 
-This repository has no root build command. Match checks to the change:
-
-- Validate changed skills and plugin metadata with available validators when present.
-- Parse changed JSON and YAML with structured tools.
-- Search active guidance for stale paths or removed skill names.
-- Inspect the final diff and report any validation that could not run.
+There is no root build command. Validate changed skills and plugin metadata
+with available validators; parse JSON/YAML, check relative links and stale
+routing references, and run `git diff --check`. Match behavioral checks to the
+change and report limitations. Do not require a particular local tool install.
