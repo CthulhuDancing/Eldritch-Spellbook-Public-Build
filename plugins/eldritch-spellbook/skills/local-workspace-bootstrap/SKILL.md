@@ -36,8 +36,9 @@ and smallest needed decision.
 
 Repository guidance owns project commands, dependencies, tests, and CI;
 applicable workspace or machine `AGENTS.md` owns reusable topology. Follow the
-host's instruction hierarchy, not a new precedence order; explicit user
-changes to stored preferences are not subordinate to those preferences.
+host's instruction hierarchy, not a new precedence order. A current explicit
+user request may update a stored preference while the host instruction
+hierarchy still applies.
 
 Reading or diagnosing does not authorize persistent setup. For authorized
 bootstrap, proceed without reconfirming safe steps within scope:
