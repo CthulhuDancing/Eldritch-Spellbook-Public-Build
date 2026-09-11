@@ -59,9 +59,10 @@ content and host instruction precedence; keep machine topology out of tracked
 project guidance.
 
 Use a supported instruction entry point or scoped pointer so future tasks can
-find the policy; a sibling file alone is insufficient. Report discovery gaps
-or recording outside authorized scope. Shared development setup belongs to
-local-workspace-bootstrap when available, not this workflow.
+find the policy; a sibling file alone is insufficient. If no authorized local
+instruction target exists, report the discovery gap or recording need instead
+of writing anything outside the authorized scope. Shared development setup
+belongs to local-workspace-bootstrap when available, not this workflow.
 
 Return the decision/change, validation, remaining risk, and
 `Local conventions: reused <source>`, `recorded <path and scope>`, or
