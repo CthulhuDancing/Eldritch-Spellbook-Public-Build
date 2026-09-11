@@ -21,8 +21,8 @@ trigger and reusable guidance justify the context and maintenance cost.
 ## D004 - Activation boundaries
 
 Natural-language selection makes skills accessible without knowing their names.
-Selection never authorizes unrequested actions; GitHub operations still need
-the user's request for that action.
+Selection alone grants no authority. Interpret the user's request as a
+workflow, without requiring separate approval for each routine delivery step.
 
 ## D005 - Proportional discovery
 

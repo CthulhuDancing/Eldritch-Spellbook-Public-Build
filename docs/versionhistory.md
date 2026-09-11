@@ -10,7 +10,8 @@ trivial edits need no full delivery flow unless required.
 
 Consolidated repeated instructions and documentation, including the intermediate
 0.12.1 routing work in this release. Preserved the eight skills, activation
-settings, and permission/security boundaries.
+settings, and security boundaries. Push requests include draft PR delivery
+unless explicitly excluded by the user or applicable local guidance.
 
 ## 0.12.0 - External code research
 

@@ -49,8 +49,10 @@ credential concerns, use application-data-and-secrets when available.
    Repository guidance owns runtime policy, dependencies, tests, CI, releases,
    and business behavior; keep shared tooling generic.
 4. Run the complete required validation and record commands and results.
-5. Commit, push, and open/update draft PRs only as authorized by the request.
-   Do not merge, enable auto-merge, add reviewers, or add labels unless asked.
+5. Commit and publish within the requested scope. A push request includes
+   creating or updating a draft PR unless the user or applicable `AGENTS.md`
+   explicitly excludes it.
+   Do not merge, deploy, enable auto-merge, add reviewers, or add labels unless asked.
 6. Report the branch/worktree, changed files, validation, PR reference, review
    risk, and `Local conventions: reused <source>`, `recorded <path>`, or
    `not recorded <reason>`.

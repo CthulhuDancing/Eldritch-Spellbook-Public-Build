@@ -26,9 +26,11 @@ focused task branch unless the user explicitly requests a default-branch write.
    use routine-worktree-task when available and suitable. Do not duplicate
    local-policy discovery here.
 3. Group commits into coherent review units and run relevant validation.
-   Commit, push, and open or update a PR only as authorized by the request.
+   Commit and publish within the requested scope. A push request includes
+   creating or updating a draft PR unless the user or applicable `AGENTS.md`
+   explicitly excludes it.
 
-Do not merge, enable auto-merge, request reviewers, assign users, add labels,
+Do not merge, deploy, enable auto-merge, request reviewers, assign users, add labels,
 close work, or create releases unless explicitly asked. Keep multi-repository
 branches, validation, and PRs repository-local and state their dependencies.
 
