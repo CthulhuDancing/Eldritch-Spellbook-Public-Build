@@ -1,61 +1,86 @@
 ---
 name: routine-worktree-task
-description: Prepare and deliver a bounded, low-risk repository change through an isolated worktree and draft PR when ownership and validation are clear. For trivial local edits, use only when isolated delivery is requested or required. Exclude unresolved architectural, production-sensitive, cross-repository, or secret-handling work.
+description: Deliver bounded repository changes through an isolated branch and worktree when scope, ownership, validation, and review expectations are clear.
 ---
 
 # Routine Worktree Task
 
-This is a repository delivery workflow, not authority to change models, task
-creation, or agent runtime settings. Review and planning requests remain
-read-only; perform delivery steps only within the user's authorized scope.
+Use this workflow for bounded, low-risk repository changes that fit one isolated
+branch/worktree and have clear validation.
 
-## Policy Fast Path
+This workflow does not expand authority. Review and planning remain read-only;
+delivery actions must stay within the user's authorized scope.
 
-Reuse applicable instructions already in context. When worktree, branch,
-review, and validation conventions are known, check only current Git state,
-registered worktrees, and the exact target. Do not repeat instruction audits,
-search alternate roots, or record unchanged policy.
+## Suitability Gate
+
+Proceed only when:
+- the requested change is bounded and clearly owned;
+- the expected behavior is understood well enough to implement;
+- maintained validation exists or success can be verified deterministically;
+- the work fits one repository and one focused branch/worktree;
+- no unresolved architectural, production-sensitive, cross-repository, or
+  secret-handling decision remains.
+
+If those conditions stop being true, leave the routine flow and reassess rather
+than stretching the workflow to fit.
+
+## Delivery Flow
+
+1. Reuse established repository guidance, task scope, and local conventions.
+   Inspect only the current Git state, registered worktrees, target files, and
+   missing context needed for this change.
+
+2. Establish the delivery state:
+   - reuse a suitable assistant-owned branch/worktree for the same task when it
+     still matches the requested base and isolation requirements;
+   - otherwise create an isolated branch/worktree from the requested or default
+     base;
+   - preserve the normal checkout and unrelated work.
+
+3. Confirm the implementation path before editing. If required behavior,
+   ownership, or relevant source is still unclear, use the appropriate
+   discovery workflow before continuing.
+
+4. Make the smallest change that satisfies the agreed scope. Preserve unrelated
+   behavior and follow repository-owned guidance for dependencies, runtime
+   behavior, tests, CI, releases, and business rules.
+
+5. Run the complete required validation.
+
+6. If validation fails:
+   - use the failure as new evidence;
+   - determine whether it identifies a scoped defect in the current change;
+   - if so, correct that defect and validate again;
+   - if it instead exposes an architectural issue, production risk,
+     cross-repository dependency, environment problem, permission boundary, or
+     other condition outside this routine task, stop the loop and reassess.
+
+7. Do not repeat an equivalent edit or validation attempt unless the repository
+   state or available evidence materially changed.
+
+8. When validation passes, commit and publish within the requested scope. A push
+   request includes creating or updating a draft PR unless the user or
+   applicable repository guidance explicitly excludes it.
+
+9. Report the branch/worktree, changed files, validation performed, PR
+   reference when applicable, remaining review risk, and relevant reused or
+   recorded local conventions.
+
+## Boundaries
+
+Do not reuse another task's workspace, silently rebase approved work, alter the
+normal checkout, or write to the default branch without authorization for that
+action.
+
+Do not merge, deploy, enable auto-merge, add reviewers, add labels, or perform
+other consequential repository actions unless requested.
+
+For application storage or credential concerns, use
+application-data-and-secrets when available.
 
 If a required shared-resource convention needs setup or repair, use
-local-workspace-bootstrap when available. Resolve single permission failures
-through known guidance first; ordinary Git-state problems are not bootstrap
-requests. Trivial local edits need no full delivery flow unless requested or
-required by applicable guidance.
-
-## Suitability
-
-Proceed when one bounded change has clear ownership, maintained deterministic
-validation, and fits one isolated branch/worktree and focused PR. No unresolved
-architecture, product, or cross-repository decision, secret handling, or
-material production change may remain.
-
-If those conditions cease to hold, network/security behavior changes, or
-validation fails unexpectedly, reassess outside the routine flow. Preserve
-checkout and unrelated-change protections. For application storage or
-credential concerns, use application-data-and-secrets when available.
-
-## Delivery
-
-1. Before editing, state or reuse the agreed scope, acceptance checks, ownership,
-   base/branch, worktree, validation commands, and review focus. Inspect local and
-   remote state and preserve unrelated work.
-2. Reuse a suitable assistant-owned branch/worktree belonging to this task and
-   meeting its requested base/isolation requirements. For a new task, fetch the
-   requested or default base and create an isolated branch/worktree from it.
-   Do not reuse another task's workspace, silently rebase approved work, alter
-   the normal checkout, or write to the default branch without authorization
-   for that action.
-3. Read only missing or changed project context and make the scoped edits.
-   Repository guidance owns runtime policy, dependencies, tests, CI, releases,
-   and business behavior; keep shared tooling generic.
-4. Run the complete required validation and record commands and results.
-5. Commit and publish within the requested scope. A push request includes
-   creating or updating a draft PR unless the user or applicable `AGENTS.md`
-   explicitly excludes it.
-   Do not merge, deploy, enable auto-merge, add reviewers, or add labels unless asked.
-6. Report the branch/worktree, changed files, validation, PR reference, review
-   risk, and `Local conventions: reused <source>`, `recorded <path>`, or
-   `not recorded <reason>`.
+local-workspace-bootstrap when available. Ordinary Git-state problems do not
+by themselves require bootstrap.
 
 Remove registered worktrees only through Git's worktree workflow when cleanup
 is requested or included in the task; never manually delete their directories.

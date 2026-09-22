@@ -1,5 +1,26 @@
 # Version History
 
+## 0.14.0
+
+Refactored repository-oriented skills around evidence-driven gates, re-entry,
+and explicit stop conditions so repeated actions require materially new state
+or evidence.
+
+Expanded `efficient-codebase-discovery` to cover both local and external code
+discovery. Added deterministic `map_repo.py` repository mapping for unfamiliar
+runtime-accessible repositories, including manifests, navigation files, source
+roots, declared entry points, candidate code surfaces, tests, documentation,
+file distribution, and file types. External upstream research is now handled
+through a conditional reference, replacing the standalone
+`external-code-research` skill.
+
+Removed `external-code-research` and folded its external research workflow into `efficient-codebase-discovery`.
+
+Refined `fix-ci` and `routine-worktree-task` into bounded evidence-driven loops
+with clearer suitability, reclassification, validation, and no-progress stop
+conditions while preserving existing authorization and repository-safety
+boundaries.
+
 ## 0.13.0 - Application data and workflow refinements
 
 Added `application-data-and-secrets`, two conditional references, and behavioral
