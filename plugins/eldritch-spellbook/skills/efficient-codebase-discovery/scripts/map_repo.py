@@ -121,6 +121,11 @@ CODE_EXTENSIONS = {
     ".ts",
     ".tsx",
 }
+
+EXTENSION_ALIASES = {
+    ".yml": ".yaml/.yml",
+    ".yaml": ".yaml/.yml",
+}
 # =========
 
 
@@ -178,17 +183,33 @@ def git_files(root: Path) -> list[Path] | None:
 # Filesystem fallback used when the target is not a Git repository. It walks
 # the directory tree conservatively, skips common generated/vendor folders,
 # and applies any requested depth limit to keep discovery proportional.
-def filesystem_files(root: Path) -> list[Path]:
+def filesystem_files(
+    root: Path,
+    max_depth: int | None,
+) -> list[Path]:
     files: list[Path] = []
 
     for current, dirnames, filenames in os.walk(root):
+        current_path = Path(current)
+
+        try:
+            relative = current_path.relative_to(root)
+        except ValueError:
+            continue
+
+        current_depth = 0 if relative == Path(".") else len(relative.parts)
+
         dirnames[:] = sorted(
             directory
             for directory in dirnames
             if directory not in IGNORED_DIRS
         )
 
-        current_path = Path(current)
+        if (
+            max_depth is not None
+            and current_depth >= max_depth
+        ):
+            dirnames[:] = []
 
         for filename in sorted(filenames):
             try:
@@ -682,7 +703,10 @@ def build_map(
         files = tracked
     else:
         inventory_source = "filesystem"
-        files = filesystem_files(root)
+        files = filesystem_files(
+            root,
+            max_depth,
+        )
 
     files = [
         path

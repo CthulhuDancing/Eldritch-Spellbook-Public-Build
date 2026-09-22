@@ -14,8 +14,7 @@ After the marketplace syncs, install **Eldritch Spellbook**.
 
 ## Skills
 
-- [`efficient-codebase-discovery`](plugins/eldritch-spellbook/skills/efficient-codebase-discovery/): locate unfamiliar behavior with native search and optional semantic tools.
-- [`external-code-research`](plugins/eldritch-spellbook/skills/external-code-research/): investigate public upstream code and dependency internals.
+- [`efficient-codebase-discovery`](plugins/eldritch-spellbook/skills/efficient-codebase-discovery/): locate local or upstream implementation behavior with deterministic repository mapping, targeted search, and evidence-driven source inspection.
 - [`local-workspace-bootstrap`](plugins/eldritch-spellbook/skills/local-workspace-bootstrap/): reuse or safely establish shared development tools, caches, and worktree conventions.
 - [`application-data-and-secrets`](plugins/eldritch-spellbook/skills/application-data-and-secrets/): scope application configuration, credentials, and persistent data.
 - [`github-repo-actions`](plugins/eldritch-spellbook/skills/github-repo-actions/): handle requested GitHub inspection and publishing actions.
