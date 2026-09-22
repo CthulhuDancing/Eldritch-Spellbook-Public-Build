@@ -90,3 +90,16 @@ Preserve actual-runtime access checks and controlled migration rollback:
 directory names and Git ignores do not establish protection or remediate
 leaks. Production cutover, rotation, destructive cleanup, and history changes
 retain separate authorization.
+
+## D016 - Evidence-driven workflow graphs
+
+Express reusable workflows as bounded gates, routes, re-entry conditions, and
+completion conditions when branching or iteration materially improves execution.
+
+Iterations require new actionable evidence. Do not repeat equivalent searches,
+edits, commands, or validation attempts unless the state or available evidence
+has materially changed.
+
+Workflow transitions may select another applicable skill but do not expand user
+authorization. Prefer lightweight skill instructions over mandatory orchestration
+frameworks, centralized supervisor agents, or fixed retry counts.
