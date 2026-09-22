@@ -13,7 +13,7 @@ orientation when filesystem access is available.
 avoid repeated equivalent actions when repository state or diagnostic evidence
 has not changed.
 
-- removed `external-code-research`. Rolled this functionality into `efficient-codebase-discovery`
+- Removed `external-code-research` and folded its functionality into `efficient-codebase-discovery`.
 
 ## Next
 
