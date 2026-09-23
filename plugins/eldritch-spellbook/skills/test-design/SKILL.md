@@ -5,58 +5,53 @@ description: Select, add, or review automated tests for changed behavior, bug fi
 
 # Test Design
 
-Protect meaningful behavior with the smallest justified coverage change.
+Protect the behavior that matters, with no more coverage than the change
+justifies.
 
 ## Coverage Flow
 
-1. Start from the requested behavior, current diff, and known context. Inspect
-   relevant assertions, fixtures, helpers, and repository-owned test commands.
-   Widen discovery only when coverage or the expected behavior remains unclear.
+Begin with the requested behavior, the current diff, and the tests already
+around the affected code. Read the relevant assertions, fixtures, helpers, and
+repository test commands. Expand the search only when the contract or existing
+coverage is genuinely unclear.
 
-2. Classify the coverage decision:
-   - **Sufficient coverage:** reuse it and proceed to validation.
-   - **Demonstrated gap:** identify the missing behavioral protection and propose
-     extending a maintained test or adding one.
-   - **Unclear behavior or coverage:** inspect the missing evidence, then
-     reassess; do not invent expected behavior to write a test.
-   - **Low-impact change with adequate direct verification:** add no automated
-     test unless repository guidance requires one.
+Then make one of three calls:
 
-3. Challenge each proposed test or behavior group: what plausible failure would
-   it catch, why would existing checks miss it, and why does that failure matter?
-   Ground edge cases in supported behavior, observed defects, or concrete risks
-   on affected paths. Possibility alone is insufficient; rarity alone does not
-   dismiss a credible high-impact failure.
+- **Covered:** keep the existing tests and validate them.
+- **Gap:** extend a maintained test or add a focused one.
+- **Unclear:** gather the missing evidence before deciding. Do not invent an
+   expected behavior just to make a test possible.
 
-   Discard duplicate or speculative proposals. Revise weak assertions or return
-   to discovery when the contract is unclear. Keep the justification brief.
+For every proposed test, be able to answer three questions: what failure would
+it catch, why would the current checks miss that failure, and why does the
+failure matter? Base edge cases on the supported contract, an observed defect,
+or a concrete risk on the affected path. A merely conceivable case is not
+enough. Drop duplicate or speculative tests, and keep the reasoning brief.
 
-4. For justified, authorized changes, reuse existing test conventions and
-   fixtures. Prefer representative input classes and meaningful invariants;
-   use parameterization when useful without building unnecessary abstractions.
-   Preserve concrete regression inputs that expose known defects.
+When a test is warranted and the change is authorized, follow the repository's
+existing conventions and fixtures. Prefer representative inputs and observable
+invariants. Use parameterization where it makes the cases clearer, not as an
+abstraction exercise. Keep concrete regression inputs that expose a known
+defect.
 
-   Assert observable behavior at the smallest boundary that exposes the risk.
-   Derive expected results independently from the contract. Tests should survive
-   behavior-preserving refactors rather than mirror implementation details.
+Assert behavior at the smallest useful boundary and derive the expected result
+from the contract, independently of the implementation. A good test should
+survive a behavior-preserving refactor.
 
-5. Run the closest maintained checks and complete required validation. For a
-   regression, demonstrate failure before the fix and success afterward when
-   practical. Otherwise explain the verification limit.
+Run the closest maintained checks. For a regression, reproduce the failure
+before the fix when practical, then show the check passing afterward. If that
+is not possible, say what the validation did and did not establish.
 
-6. Evaluate the result:
-   - **Gap addressed and required checks pass:** finish.
-   - **Scoped implementation defect:** correct it within authorization, then
-     recheck.
-   - **Test does not distinguish correct from incorrect behavior:** return to
-     test design without weakening the contract.
-   - **Environment failure or unresolved scope/behavior:** route to appropriate
-     diagnosis or report the boundary; do not add speculative tests.
+If a check fails, use the result to decide what happens next. Fix a scoped
+implementation defect within the user's authorization and rerun the check. If
+the test itself cannot distinguish correct from incorrect behavior, double check the assumptions of the test case. Do not treat environment failures,
+unclear scope, or unresolved behavior as reasons to add speculative coverage. 
 
-7. Repeat discovery, edits, or checks only when changed state or new actionable
-   evidence supports another attempt. Stop when complete or further work cannot
-   make evidence-driven progress. Report the coverage decision, brief rationale,
-   validation performed, and unresolved limits.
+Do not repeat an equivalent investigation or edit
+unless the state or evidence has changed.
+
+Finish by reporting the coverage decision, its brief rationale, the validation
+performed, and any remaining limitation.
 
 ## Boundaries
 
