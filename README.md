@@ -21,6 +21,7 @@ After the marketplace syncs, install **Eldritch Spellbook**.
 - [`agent-context-bridge`](plugins/eldritch-spellbook/skills/agent-context-bridge/): transfer project or task context between conversations and agents.
 - [`routine-worktree-task`](plugins/eldritch-spellbook/skills/routine-worktree-task/): deliver bounded, low-risk changes through isolated worktrees and draft PRs.
 - [`fix-ci`](plugins/eldritch-spellbook/skills/fix-ci/): distinguish code defects from environment failures and guide scoped corrections.
+- [`test-design`](plugins/eldritch-spellbook/skills/test-design/): inspect existing coverage and justify behavioral tests without speculative suite growth.
 
 Plain-language requests select workflows, not permission for extra actions.
 Established local policy takes the fast path; missing conventions are recorded

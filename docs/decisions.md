@@ -2,6 +2,14 @@
 
 Record durable choices and their rationale here; procedures belong in skills.
 
+## D017 - Test design ownership
+
+Test selection has a distinct trigger from discovery, CI diagnosis, and
+worktree delivery. A small standalone skill owns coverage-gap justification
+and behavioral test design; delivery and CI route to it only when needed.
+Existing coverage and concrete failure mechanisms govern additions, rather
+than speculative edge cases or test counts.
+
 ## D001 - Canonical source
 
 Edit `plugins/eldritch-spellbook/skills/<skill-name>`, not installed/cache copies,

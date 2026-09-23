@@ -1,5 +1,12 @@
 # Version History
 
+## 0.15.0 - Test design
+
+Added `test-design` for existing-coverage inspection, justified behavioral
+tests, representative input classes, and evidence-based stopping conditions.
+Worktree delivery and CI correction now route coverage decisions to it.
+Added UI metadata and behavioral scenarios without new tooling dependencies.
+
 ## 0.14.0
 
 Refactored repository-oriented skills around evidence-driven gates, re-entry,
