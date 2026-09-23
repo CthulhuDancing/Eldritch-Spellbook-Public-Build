@@ -929,14 +929,100 @@ def render_text(
 # =========
 
 
+# JSON output formatter. Keeps the complete structured map, including raw
+# manifest hints that are not displayed in the text summaries.
+#
+# Args:
+#   data: Repository summary dictionary produced by build_map().
+def render_json(
+    data: dict[str, object],
+) -> str:
+    return json.dumps(
+        data,
+        indent=2,
+        sort_keys=False,
+    )
+# =========
+
+
+# Compact output formatter. Groups the same evidence as render_text() under
+# short headings, without blank lines, bullets, or empty sections. This reduces
+# repeated text for agent consumption while keeping the report readable.
+#
+# Args:
+#   data: Repository summary dictionary produced by build_map().
+def render_compact(
+    data: dict[str, object],
+) -> str:
+    lines: list[str] = [
+        f"root: {data['root']}",
+        f"inventory: {data['source']}",
+        f"files: {data['file_count']}",
+    ]
+
+    if data["max_depth"] is not None:
+        lines.append(f"depth: {data['max_depth']}")
+
+    # A heading applies to all following indented entries, so each entry
+    # needs only its value. Missing sections mean there were no entries.
+    def section(
+        title: str,
+        values: list[str],
+    ) -> None:
+        if not values:
+            return
+
+        lines.append(f"{title}:")
+        lines.extend(f"  {value}" for value in values)
+
+    section("manifests", data["manifests"])
+    section(
+        "declared entries",
+        [
+            f"{item['path']} <- {item['source']}"
+            for item in data["declared_entrypoints"]
+        ],
+    )
+    section("navigation", data["navigation_files"])
+    section("likely source roots", data["source_roots"])
+    section(
+        "candidate code surfaces (code files)",
+        [
+            f"{item['path']}: {item['files']}"
+            for item in data["candidate_code_surfaces"]
+        ],
+    )
+    section("likely test roots", data["test_roots"])
+    section("doc roots", data["doc_roots"])
+    section("entry candidates", data["entrypoint_candidates"])
+    section(
+        "top directories (files)",
+        [
+            f"{item['path']}: {item['files']}"
+            for item in data["top_directories"]
+        ],
+    )
+    section(
+        "file types (files)",
+        [
+            f"{item['extension']}: {item['files']}"
+            for item in data["extensions"]
+        ],
+    )
+
+    return "\n".join(lines)
+# =========
+
+
 # Command-line argument parser. Defines the supported script options and turns
 # the user's CLI input into values the main routine can use.
 #
 # Supports:
 #   path: Repository or directory to scan.
-#   --json: Emit structured JSON instead of text.
+#   --format: Choose text, JSON, or compact output.
+#   --json: Compatibility alias for --format json.
 #   --max-depth: Limit how deep the scan considers files.
-#   --limit: Limit how many entries appear in each summary section.
+#   --limit: Limit summary sections, excluding declared entries and raw hints.
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
@@ -955,10 +1041,21 @@ def parse_args() -> argparse.Namespace:
         ),
     )
 
-    parser.add_argument(
+    # Output selectors are mutually exclusive so conflicting choices produce
+    # a clear error instead of silently overriding one another.
+    output = parser.add_mutually_exclusive_group()
+    output.add_argument(
+        "--format",
+        choices=("text", "json", "compact"),
+        default="text",
+        help="Output format (default: text).",
+    )
+    output.add_argument(
         "--json",
-        action="store_true",
-        help="Emit JSON instead of human-readable text.",
+        dest="format",
+        action="store_const",
+        const="json",
+        help="Alias for --format json.",
     )
 
     parser.add_argument(
@@ -976,8 +1073,8 @@ def parse_args() -> argparse.Namespace:
         type=int,
         default=20,
         help=(
-            "Maximum entries shown per section "
-            "(default: 20)."
+            "Maximum entries per summary section (default: 20); "
+            "declared entry points and raw manifest hints are not limited."
         ),
     )
 
@@ -986,7 +1083,7 @@ def parse_args() -> argparse.Namespace:
 
 
 # Program entry point. Validates user input, builds the repository map, selects
-# text or JSON output, and returns an appropriate process exit code.
+# text, JSON, or compact output, and returns an appropriate process exit code.
 #
 # Exit codes:
 #   0: Successful scan.
@@ -1033,14 +1130,10 @@ def main() -> int:
         args.limit,
     )
 
-    if args.json:
-        print(
-            json.dumps(
-                data,
-                indent=2,
-                sort_keys=False,
-            )
-        )
+    if args.format == "json":
+        print(render_json(data))
+    elif args.format == "compact":
+        print(render_compact(data))
     else:
         print(render_text(data))
 
