@@ -17,7 +17,7 @@ Use the smallest discovery method that can answer the question.
      repository mapping when the relevant path or implementation area is already
      sufficiently known.
    - **Unfamiliar local or runtime-accessible repository:** when the repository is available in the current runtime, run
-     `scripts/map_repo.py <repository-root>` first. Use the resulting
+     `scripts/map_repo.py <repository-root> --format compact` first. Use the resulting
      manifests, navigation files, source roots, entry points, code surfaces,
      tests, and documentation paths to guide targeted inspection.
    - **Remote repository without filesystem access:** use the available repository
@@ -69,14 +69,16 @@ behavior.
 
 ### `scripts/map_repo.py`
 
-Run:
+For agent consumption, use compact output:
 ```bash
-python scripts/map_repo.py <repository-root>
+python scripts/map_repo.py <repository-root> --format compact
 ```
 Available options:
-- --json — emit structured JSON instead of text.
+- --format compact — group structural evidence under short headings and omit empty sections.
+- --format text — show the original readable report (the default).
+- --format json or --json — emit the complete map, including raw manifest hints.
 - --max-depth N — limit the scan by directory depth.
-- --limit N — limit entries shown per summary section.
+- --limit N — limit summary entries; declared entry points and raw manifest hints remain unlimited.
 - Omit <repository-root> to scan the current directory.
 
 ## Boundaries
