@@ -2,8 +2,11 @@
 
 ## Current
 
-`0.14.0` refactors repository-oriented skills around evidence-driven workflow
-gates, re-entry, and explicit stop conditions.
+`0.15.0` adds `test-design` as the eighth workflow, with conditional routing
+from worktree delivery and CI correction. Marketplace installation has not
+been verified.
+
+The preceding `0.14.0` release established:
 
 - `efficient-codebase-discovery` now owns both local and external code discovery
 and includes a deterministic `map_repo.py` helper for first-pass repository
@@ -17,8 +20,11 @@ has not changed.
 
 ## Next
 
-Validate `0.14.0` through fresh marketplace installation and behavioral
-scenarios, with particular attention to:
+Validate `0.15.0` through fresh marketplace installation and behavioral
+scenarios, including the outstanding `0.14.0` checks:
+
+- `test-design` reusing sufficient coverage, selecting contract-based
+regressions, rejecting speculative cases, and justifying no-test decisions;
 
 - `efficient-codebase-discovery` choosing correctly between known local targets,
   runtime-accessible repositories, remote-only repositories, and external

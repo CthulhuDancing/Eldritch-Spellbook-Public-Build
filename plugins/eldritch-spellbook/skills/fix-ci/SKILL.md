@@ -27,11 +27,14 @@ Diagnose from evidence; failing automation alone does not authorize code changes
      inventing credentials.
 
 4. For authorized corrections, preserve unrelated behavior and follow
-   repository ownership and validation rules. Run the closest maintained local
-   check before relying on remote CI alone.
+   repository ownership and validation rules. An existing failing test may
+   already provide sufficient regression coverage. When a code correction
+   needs a coverage decision, use [test-design](../test-design/SKILL.md), then
+   return to this recovery flow.
 
 5. After a correction or meaningful reproduction attempt, recheck the relevant
-   validation or automation when supported and authorized.
+   validation or automation when supported and authorized. Run the closest
+   maintained local check before relying on remote CI alone.
 
 6. If validation still fails:
    - treat the new failure as evidence;

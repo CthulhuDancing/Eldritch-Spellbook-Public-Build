@@ -45,7 +45,8 @@ than stretching the workflow to fit.
    behavior and follow repository-owned guidance for dependencies, runtime
    behavior, tests, CI, releases, and business rules.
 
-5. Run the complete required validation.
+5. For coverage decisions, use [test-design](../test-design/SKILL.md).
+   Run the complete required validation.
 
 6. If validation fails:
    - use the failure as new evidence;

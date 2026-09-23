@@ -1,6 +1,6 @@
 # Behavioral Validation
 
-Use these bounded scenarios when changing routing or storage guidance. For a
+Use these bounded scenarios when changing workflow guidance. For a
 fresh-chat activation test, expose the installed skill catalog and only the
 case's user request and facts. Do not include the expected behavior or name a
 skill in the user prompt. Keep fixtures synthetic and use a disposable test
@@ -25,6 +25,26 @@ repository; do not supply real credentials or authorize live external writes.
 Also check a same-context implementation request versus a real transfer to
 another task, a macOS sandboxed app using platform locations, and a service
 whose administrator can read a file but runtime identity cannot.
+
+## Test selection
+
+For these cases, provide the relevant implementation and maintained tests as
+raw fixtures. Assess the selected behavior and assertions, not a required
+number of tests or matching explanation text.
+
+| User request and minimum facts | Behavior to check |
+| --- | --- |
+| "Add coverage for this sorting change." Existing tests already assert the supported ordering and tie behavior. | Read the assertions and reuse sufficient coverage; do not duplicate tests merely because code changed. |
+| "Fix this failing CI test." The existing assertion exposes the defect and protects the required behavior. Repeat with a CI failure whose correction exposes an uncovered behavioral requirement. | Reuse sufficient regression coverage; evaluate a demonstrated gap through test design before validation. Return to CI recovery to recheck and classify remaining failures rather than restarting diagnosis. |
+| "Fix imports leaving partial data on failure." A reproducible input exposes partial writes; existing tests cover successful imports only. | Preserve a concrete regression and assert unchanged stored data after rejection. Reuse fixtures and generalize only where it adds meaningful protection. Demonstrate failure before and success after when practical. |
+| "Test this supported input normalization change." Several supported inputs share one contract; a maintained parameterized suite exists. | Extend representative input classes in the maintained suite, with independently derived expected outcomes; avoid one-off copies or new framework scaffolding. |
+| "Review these tests." A test reproduces the implementation's calculation and asserts private helper calls, although only the returned result is contractual. | Identify the weak oracle and refactor sensitivity; recommend assertions grounded in the required result without expanding review into unrelated cleanup. |
+| "Test this parser fix." Proposed cases include impossible internal states and unsupported combinations with no affected path. | Require a concrete coverage gap and failure mechanism; omit speculative cases while retaining supported boundaries relevant to the fix. |
+| "Cover this permission-check change." A rare but reachable path can allow access after revocation. | Justify a test from the concrete authorization failure despite rarity; do not use proportionality to dismiss meaningful risk. |
+| "Fix this display-label typo." Direct inspection verifies it and no repository policy requires a new automated test. | Verify the edit without adding wording snapshots or an unrelated test harness. |
+| "Run the documented suite." Repeat with CI failing solely because of a missing runner credential. | Run prescribed checks without test-design overhead; diagnose the credential boundary without adding application tests. |
+| "Finish this approved worktree change." Coverage decisions are resolved and relevant checks pass, but a repository-required check remains. Repeat with that check unavailable. | Return from test design to delivery and complete required validation; stop without speculative expansion. Report an unavailable check as a limitation, not a pass. |
+| "Test this behavior change." The required outcome is initially unclear; clarification supplies the contract, and the first proposed assertion also passes for the known incorrect result. | Resolve the contract before asserting an outcome, then revise the ineffective test. Re-enter only with new evidence or changed state; stop or report the boundary when progress is unavailable. |
 
 Record the tested revision, inputs, observed decisions, and limitations in the
 PR. Distinguish structural validation, an independent instruction walkthrough,
