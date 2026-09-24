@@ -2,3 +2,6 @@ interface:
   display_name: "Application Data and Secrets"
   short_description: "Keep application data and credentials safely scoped."
   default_prompt: "Use $application-data-and-secrets to review or set up this application storage and credential contract."
+
+policy:
+  products: [CHAT, CODEX]
