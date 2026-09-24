@@ -7,8 +7,8 @@
     {
       "name": "eldritch-spellbook",
       "source": {
-        "source": "local",
-        "path": "./plugins/eldritch-spellbook"
+        "source": "url",
+        "url": "https://github.com/CthulhuDancing/Eldritch-Spellbook-Public-Build.git"
       },
       "policy": {
         "installation": "AVAILABLE",
