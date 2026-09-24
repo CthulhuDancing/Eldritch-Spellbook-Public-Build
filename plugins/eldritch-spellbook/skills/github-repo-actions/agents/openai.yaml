@@ -4,4 +4,5 @@ interface:
   default_prompt: "Use $github-repo-actions to handle this requested GitHub action."
 
 policy:
+  products: [CHAT, CODEX]
   allow_implicit_invocation: true
