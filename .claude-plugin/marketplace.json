@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "eldritch-spellbook",
+  "description": "A collection of reusable co-development workflows for Claude Code.",
+  "owner": {
+    "name": "CthulhuDancing",
+    "url": "https://github.com/CthulhuDancing"
+  },
+  "plugins": [
+    {
+      "name": "eldritch-spellbook",
+      "source": "./plugins/eldritch-spellbook",
+      "displayName": "Eldritch Spellbook",
+      "description": "Lean co-development guidance for discovery, upstream research, reusable workspaces, application data and secrets, safe GitHub actions, worktrees, handoffs, CI recovery, and test design.",
+      "category": "Developer Tools"
+    }
+  ]
+}

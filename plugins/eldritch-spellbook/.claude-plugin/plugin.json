@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "eldritch-spellbook",
+  "displayName": "Eldritch Spellbook",
+  "version": "0.15.0",
+  "description": "Lean co-development guidance for discovery, upstream research, reusable workspaces, application data and secrets, safe GitHub actions, worktrees, handoffs, CI recovery, and test design.",
+  "author": {
+    "name": "CthulhuDancing",
+    "url": "https://github.com/CthulhuDancing"
+  },
+  "homepage": "https://github.com/CthulhuDancing/Eldritch-Spellbook-Public-Build",
+  "repository": "https://github.com/CthulhuDancing/Eldritch-Spellbook-Public-Build",
+  "keywords": [
+    "development-workflow",
+    "github",
+    "agent-handoff",
+    "codebase-discovery",
+    "semantic-search",
+    "context-bridge",
+    "worktree",
+    "routine-task",
+    "ci",
+    "build-failure",
+    "workspace-bootstrap",
+    "local-runtime",
+    "dependency-cache",
+    "upstream-research",
+    "dependency-internals",
+    "application-data",
+    "secrets-handling",
+    "test-design"
+  ],
+  "skills": "./skills/"
+}
