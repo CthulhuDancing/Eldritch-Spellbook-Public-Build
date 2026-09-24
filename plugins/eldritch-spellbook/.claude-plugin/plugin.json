@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "eldritch-spellbook",
   "displayName": "Eldritch Spellbook",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "Lean co-development guidance for discovery, upstream research, reusable workspaces, application data and secrets, safe GitHub actions, worktrees, handoffs, CI recovery, and test design.",
   "author": {
     "name": "CthulhuDancing",
