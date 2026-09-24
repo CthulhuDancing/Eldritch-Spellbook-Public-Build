@@ -2,6 +2,20 @@
 
 Record durable choices and their rationale here; procedures belong in skills.
 
+## D018 - Local workflow preferences
+
+Bootstrap owns one-time setup of user-selected development defaults as well as
+reusable resources. Skills supply portable mechanics and bounded fallbacks;
+discoverable local guidance holds scoped preferences. Ordinary work reuses
+existing choices without a setup questionnaire. Persistence requires authorized
+setup or a request to remember the choice.
+
+Push-to-draft-PR delivery is a local preference, not a universal default.
+Unconfigured pushes remain push-only; explicit PR requests include PR delivery.
+Personal worktree preferences may include trivial edits, while ordinary trivial
+edits avoid the full delivery workflow unless applicable policy requires it.
+Current task overrides do not silently rewrite saved defaults.
+
 ## D017 - Test design ownership
 
 Test selection has a distinct trigger from discovery, CI diagnosis, and

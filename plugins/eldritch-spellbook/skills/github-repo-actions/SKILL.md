@@ -26,9 +26,14 @@ focused task branch unless the user explicitly requests a default-branch write.
    use routine-worktree-task when available and suitable. Do not duplicate
    local-policy discovery here.
 3. Group commits into coherent review units and run relevant validation.
-   Commit and publish within the requested scope. A push request includes
-   creating or updating a draft PR unless the user or applicable `AGENTS.md`
-   explicitly excludes it.
+   Commit and publish within the requested scope. Create or update a draft PR
+   when requested or when an established local preference includes it with
+   authorized pushes; reuse an existing task PR. Without that preference, a
+   push request means push only. A current explicit exclusion takes precedence.
+
+For requested preference setup or a missing delivery choice that needs resolving,
+use [local-workspace-bootstrap](../local-workspace-bootstrap/SKILL.md) when
+available. Otherwise use the fallback above; do not block publication on setup.
 
 Do not merge, deploy, enable auto-merge, request reviewers, assign users, add labels,
 close work, or create releases unless explicitly asked. Keep multi-repository
