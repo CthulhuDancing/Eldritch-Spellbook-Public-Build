@@ -4,4 +4,5 @@ interface:
   default_prompt: "Use $efficient-codebase-discovery to locate and verify this unfamiliar behavior efficiently."
 
 policy:
+  products: [CHAT, CODEX]
   allow_implicit_invocation: true
