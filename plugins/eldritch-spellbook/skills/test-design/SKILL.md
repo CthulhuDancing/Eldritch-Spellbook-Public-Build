@@ -44,8 +44,11 @@ is not possible, say what the validation did and did not establish.
 
 If a check fails, use the result to decide what happens next. Fix a scoped
 implementation defect within the user's authorization and rerun the check. If
-the test itself cannot distinguish correct from incorrect behavior, double check the assumptions of the test case. Do not treat environment failures,
-unclear scope, or unresolved behavior as reasons to add speculative coverage. 
+the test also passes for a known incorrect result, revisit the contract and
+revise its inputs or assertions until it distinguishes that failure. If the
+contract remains unresolved, report the gap instead of claiming coverage.
+Do not treat environment failures, unclear scope, or unresolved behavior as
+reasons to add speculative coverage.
 
 Do not repeat an equivalent investigation or edit
 unless the state or evidence has changed.

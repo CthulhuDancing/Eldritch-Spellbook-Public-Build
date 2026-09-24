@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import shlex
 import subprocess
 import sys
 from collections import Counter
@@ -164,7 +165,10 @@ def run_git(root: Path, *args: str) -> subprocess.CompletedProcess[str]:
     )
 
 def git_root(path: Path) -> Path | None:
-    result = run_git(path, "rev-parse", "--show-toplevel")
+    try:
+        result = run_git(path, "rev-parse", "--show-toplevel")
+    except FileNotFoundError:
+        return None
     if result.returncode != 0:
         return None
 
@@ -353,22 +357,34 @@ def direct_start_path(
     command: str,
 ) -> str | None:
     """Extract a directly executed source path from a simple start command."""
-    parts = command.strip().split()
+    try:
+        # Preserve Windows backslashes and quoted paths; this is not a shell.
+        parts = shlex.split(command, posix=False)
+    except ValueError:
+        return None
 
     if len(parts) < 2:
         return None
 
     if parts[0] in {"node", "bun"}:
-        return parts[1]
-
-    if (
+        candidate = parts[1]
+    elif (
         len(parts) >= 3
         and parts[0] == "deno"
         and parts[1] == "run"
     ):
-        return parts[2]
+        candidate = parts[2]
+    else:
+        return None
 
-    return None
+    # Option-bearing commands need runtime-specific parsing. Keep their raw
+    # manifest hint instead of reporting a flag or its argument as a path.
+    candidate = candidate.strip("\"'")
+    if not candidate or candidate.startswith("-"):
+        return None
+    if any(char in candidate for char in "|&;<>`$"):
+        return None
+    return candidate
 
 def declared_entrypoints(
     manifest_metadata: Iterable[dict[str, object]],

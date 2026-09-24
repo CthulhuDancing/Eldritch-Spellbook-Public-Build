@@ -1,5 +1,16 @@
 # Version History
 
+## 0.16.0 - Local workflow preferences
+
+Extended bootstrap to resolve and record user-selected workflow preferences in
+discoverable local guidance. GitHub and worktree delivery reuse saved choices;
+push requests default to push-only unless a draft PR is requested or configured.
+Clarified trivial-edit routing and one-task overrides without mandatory setup.
+
+Improved marketplace copy and test-design guidance for ineffective assertions.
+Repository mapping now falls back when Git is absent and avoids interpreting
+runtime options as entry-point paths. Added preference-routing scenarios.
+
 ## 0.15.0 - Test design
 
 Added `test-design` for existing-coverage inspection, justified behavioral

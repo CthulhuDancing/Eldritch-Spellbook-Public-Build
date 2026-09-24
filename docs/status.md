@@ -2,9 +2,10 @@
 
 ## Current
 
-`0.15.0` adds `test-design` as the eighth workflow, with conditional routing
-from worktree delivery and CI correction. Marketplace installation has not
-been verified.
+`0.16.0` adds local workflow-preference setup to bootstrap, with saved worktree
+and push-delivery choices reused by delivery skills. Unconfigured pushes remain
+push-only. The plugin still contains eight workflows, including `test-design`
+from `0.15.0`. Marketplace installation has not been verified.
 
 The preceding `0.14.0` release established:
 
@@ -20,8 +21,12 @@ has not changed.
 
 ## Next
 
-Validate `0.15.0` through fresh marketplace installation and behavioral
-scenarios, including the outstanding `0.14.0` checks:
+Validate `0.16.0` through fresh marketplace installation and behavioral
+scenarios, including the outstanding earlier checks:
+
+- local preferences being recorded only during authorized setup, discovered in
+  a new task, reused without prompting, and overridden for one task;
+- unconfigured pushes and trivial edits proceeding without mandatory setup;
 
 - `test-design` reusing sufficient coverage, selecting contract-based
 regressions, rejecting speculative cases, and justifying no-test decisions;

@@ -1,12 +1,17 @@
 ---
 name: routine-worktree-task
-description: Deliver bounded repository changes through an isolated branch and worktree when scope, ownership, validation, and review expectations are clear.
+description: Deliver bounded substantive repository changes or requested branch/PR work through an isolated worktree when scope and validation are clear. Exclude trivial known-file edits unless applicable local policy requires isolation.
 ---
 
 # Routine Worktree Task
 
 Use this workflow for bounded, low-risk repository changes that fit one isolated
 branch/worktree and have clear validation.
+
+Reuse local worktree preferences. Trivial known-file edits need no full delivery
+flow unless applicable policy requires isolation or the user requests branch/PR
+delivery. Resolve a missing preference through local-workspace-bootstrap only
+when needed; do not turn routine editing into mandatory setup.
 
 This workflow does not expand authority. Review and planning remain read-only;
 delivery actions must stay within the user's authorized scope.
@@ -59,9 +64,10 @@ than stretching the workflow to fit.
 7. Do not repeat an equivalent edit or validation attempt unless the repository
    state or available evidence materially changed.
 
-8. When validation passes, commit and publish within the requested scope. A push
-   request includes creating or updating a draft PR unless the user or
-   applicable repository guidance explicitly excludes it.
+8. When validation passes, commit and publish within the requested scope.
+   Include a draft PR when requested or selected by an established local
+   push-delivery preference; otherwise, when a push is authorized, push only.
+   Reuse an existing task PR and honor a current explicit exclusion.
 
 9. Report the branch/worktree, changed files, validation performed, PR
    reference when applicable, remaining review risk, and relevant reused or
