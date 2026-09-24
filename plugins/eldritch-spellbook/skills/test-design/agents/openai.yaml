@@ -2,3 +2,6 @@ interface:
   display_name: "Test Design"
   short_description: "Justify behavioral tests and reuse existing coverage."
   default_prompt: "Use $test-design to inspect existing coverage and select meaningful tests for this change."
+
+policy:
+  products: [CHAT, CODEX]

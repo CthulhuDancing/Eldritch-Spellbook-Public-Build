@@ -2,3 +2,6 @@ interface:
   display_name: "Routine Worktree Task"
   short_description: "Prepare and deliver narrow repository work safely."
   default_prompt: "Use $routine-worktree-task to prepare and execute this routine repository revision."
+
+policy:
+  products: [CHAT, CODEX]

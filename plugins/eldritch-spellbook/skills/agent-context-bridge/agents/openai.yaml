@@ -4,4 +4,5 @@ interface:
   default_prompt: "Use $agent-context-bridge to prepare the smallest useful handoff for this coding work."
 
 policy:
+  products: [CHAT, CODEX]
   allow_implicit_invocation: true
