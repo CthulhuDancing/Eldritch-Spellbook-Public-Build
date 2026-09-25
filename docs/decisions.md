@@ -2,14 +2,6 @@
 
 Record durable choices and their rationale here; procedures belong in skills.
 
-## D017 - Test design ownership
-
-Test selection has a distinct trigger from discovery, CI diagnosis, and
-worktree delivery. A small standalone skill owns coverage-gap justification
-and behavioral test design; delivery and CI route to it only when needed.
-Existing coverage and concrete failure mechanisms govern additions, rather
-than speculative edge cases or test counts.
-
 ## D001 - Canonical source
 
 Edit `plugins/eldritch-spellbook/skills/<skill-name>`, not installed/cache copies,
@@ -111,3 +103,36 @@ has materially changed.
 Workflow transitions may select another applicable skill but do not expand user
 authorization. Prefer lightweight skill instructions over mandatory orchestration
 frameworks, centralized supervisor agents, or fixed retry counts.
+
+## D017 - Test design ownership
+
+Test selection has a distinct trigger from discovery, CI diagnosis, and
+worktree delivery. A small standalone skill owns coverage-gap justification
+and behavioral test design; delivery and CI route to it only when needed.
+Existing coverage and concrete failure mechanisms govern additions, rather
+than speculative edge cases or test counts.
+
+## D018 - Deterministic helper script boundary
+
+Use bundled helper scripts to offload cheap, repeatable evidence collection and
+compaction when doing so materially reduces agent tool calls, raw context, or
+token use without transferring semantic judgment away from the owning skill.
+
+Helpers should be deterministic, bounded, dependency-light, network-independent,
+and read-only by default. They provide observable evidence rather than deciding
+what the evidence means, what should change, or whether an outcome is correct.
+Skills retain workflow routing, interpretation, and action decisions.
+
+Keep runtime helpers with the skill that owns their workflow. Use a repository-
+level `scripts/` directory only for maintenance helpers that operate on the
+Spellbook itself rather than on downstream projects.
+
+Use or adhere to existing naming according to the helper's contract:
+
+- `map_*` for compact structural or state representations;
+- `*_excerpt` for bounded extraction from larger textual input;
+- `validate_*` for deterministic invariant checking.
+
+Do not create a generic helper layer solely for consistency or reuse. Promote
+shared functionality only when multiple implemented helpers have a concrete
+need for the same behavior.
